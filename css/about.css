@@ -266,9 +266,6 @@ main {
   height: 28px;
   display: none;
   cursor: pointer;
-  image-rendering: optimizeQuality;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 .content-box {
@@ -318,9 +315,6 @@ main {
   width: 80px;
   transition: transform 0.2s ease, opacity 0.2s ease;
   transform-origin: center center;
-  image-rendering: optimizeQuality;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 .logo:hover {

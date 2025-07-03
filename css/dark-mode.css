@@ -1,0 +1,64 @@
+body.dark-mode {
+  --bg-color: #0d1a33;
+  --text-color: #e7d8bb;
+  --accent-color: #2d3e5c;
+  --highlight-color: #d7a46f;
+  --box-color: rgba(255, 255, 255, 0.2);
+  --hamburger-color: #e7d8bb;
+  background-color: var(--bg-color);
+}
+
+#dark-toggle:checked ~ .container .light-toggle {
+  display: none;
+}
+
+#dark-toggle:checked ~ .container .dark-toggle {
+  display: inline-block;
+}
+
+#dark-toggle:checked ~ .container {
+  --bg-color: #0d1a33;
+  --text-color: #e7d8bb;
+  --accent-color: #2d3e5c;
+  --highlight-color: #d7a46f;
+  --box-color: rgba(255, 255, 255, 0.2);
+  --hamburger-color: #e7d8bb;
+  background-color: var(--bg-color);
+}
+
+#dark-toggle:checked ~ .container .social-links {
+  filter: invert(1);
+}
+
+.logo.light-logo,
+.logo.dark-logo {
+  display: none;
+}
+
+.logo.light-logo {
+  display: inline-block;
+}
+
+#dark-toggle:checked ~ .container .logo.light-logo {
+  display: none;
+}
+
+#dark-toggle:checked ~ .container .logo.dark-logo {
+  display: inline-block;
+}
+
+.light-toggle {
+  display: inline-block;
+}
+
+.top-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 1001;
+  overflow: visible;
+}
+
+.toggle-label {
+  position: static;
+}

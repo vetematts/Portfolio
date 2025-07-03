@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills | Matt Cicala</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/skills.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body style="background-color: var(--bg-color); color: var(--text-color);">
+  <input type="checkbox" id="dark-toggle" hidden>
+  <input type="checkbox" id="menu-toggle" hidden>
+  <div class="container">
+    <div class="header-bar">
+      <div class="branding">
+        <a href="home.html">
+          <img class="logo light-logo" src="images/M-Logo-Light.svg" alt="Matt Cicala logo Light" />
+          <img class="logo dark-logo" src="images/M-Logo-Dark.svg" alt="Matt Cicala logo Dark" />
+        </a>
+        <h4 class="logo-text">Matt<br>Cicala</h4>
+      </div>
+      <div class="top-controls">
+        <label for="dark-toggle" class="toggle-label">
+          <img src="images/moon-light.svg" class="toggle-icon light-toggle" alt="Toggle to dark mode" />
+          <img src="images/moon-dark.svg" class="toggle-icon dark-toggle" alt="Toggle to light mode" />
+        </label>
+        <label for="menu-toggle" class="hamburger">
+          <div class="burger-bar"></div>
+        </label>
+      </div>
+    </div>
+    <div class="overlay-menu">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="skills.html" class="current-page">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <main>
+      <h2 class="skills-title">My Skills</h2>
+      <div class="content-box">
+        <section id="skills">
+          <h3>Coding</h3>
+          <div class="skills-icons">
+            <div class="skill">
+              <img src="images/html-icon.svg" alt="HTML Icon">
+              <p>Proficient in HTML5 for semantic, accessible markup</p>
+            </div>
+            <div class="skill">
+              <img src="images/css-icon.svg" alt="CSS Icon">
+              <p>Comfortable styling with modern CSS techniques</p>
+            </div>
+            <div class="skill">
+              <img src="images/git-icon.svg" alt="Git Icon">
+              <p>Experienced with Git for version control and collaboration</p>
+            </div>
+          </div>
+
+          <h3>Graphics & Media</h3>
+          <div class="skills-icons">
+            <div class="skill">
+              <img src="images/photoshop-icon.svg" alt="Photoshop Icon">
+              <p>Skilled in Adobe Photoshop for image editing</p>
+            </div>
+            <div class="skill">
+              <img src="images/premiere-icon.svg" alt="Premiere Pro Icon">
+              <p>Proficient in Adobe Premiere for video editing</p>
+            </div>
+            <div class="skill">
+              <img src="images/figma-icon.svg" alt="Figma Icon">
+              <p>Design and prototype using Figma</p>
+            </div>
+            <div class="skill">
+              <img src="images/office-icon.svg" alt="Microsoft Office Icon">
+              <p>Experienced in Microsoft Office Suite</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 Matt Cicala.</p>
+    </footer>
+  </div>
+</body>
+</html>

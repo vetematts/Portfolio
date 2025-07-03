@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Matt Cicala</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+<body style="background-color: var(--bg-color); color: var(--text-color);">
+  <input type="checkbox" id="dark-toggle" hidden>
+  <input type="checkbox" id="menu-toggle" hidden>
+  <div class="container">
+    <div class="header-bar">
+      <div class="branding">
+        <a href="home.html">
+          <img class="logo light-logo" src="images/M-Logo-Light.svg" alt="Matt Cicala logo Light" />
+          <img class="logo dark-logo" src="images/M-Logo-Dark.svg" alt="Matt Cicala logo Dark" />
+        </a>
+        <h4 class="logo-text">Matt<br>Cicala</h4>
+      </div>
+      <div class="top-controls">
+        <label for="dark-toggle" class="toggle-label">
+          <img src="images/moon-light.svg" class="toggle-icon light-toggle" alt="Toggle to dark mode" />
+          <img src="images/moon-dark.svg" class="toggle-icon dark-toggle" alt="Toggle to light mode" />
+        </label>
+        <label for="menu-toggle" class="hamburger">
+          <div class="burger-bar"></div>
+        </label>
+      </div>
+    </div>
+    <div class="overlay-menu">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html" class="current-page">Contact</a></li>
+      </ul>
+    </div>
+    <h1 class="page-title">Contact</h1>
+    <main style="background-color: var(--bg-color); color: var(--text-color);">
+      <div class="content-box fade-in">
+        <section id="contact">
+          <div class="intro-text">
+            <form>
+              <div class="form-grid">
+                <div>
+                  <label for="name">Full Name:</label>
+                  <input type="text" id="name" name="name" placeholder="Your name..." required />
+                </div>
+                <div>
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" placeholder="Your email..." required />
+                </div>
+              </div>
+              <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+              </div>
+              <button type="submit">Submit</button>
+            </form>
+            <div class="social-links">
+              <p>Or find me here:</p>
+              <a href="https://x.com/vetematts" target="_blank">
+                <div class="social-icon">
+                  <img src="images/x.svg" alt="X / Twitter Icon" />
+                </div>
+              </a>
+              <a href="https://github.com/vetematts" target="_blank">
+                <div class="social-icon">
+                  <img src="images/github.svg" alt="Github Icon" />
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2025 Matt Cicala.</p>
+    </footer>
+  </div>
+</body>
+</html>

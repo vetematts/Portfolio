@@ -1,0 +1,54 @@
+.hamburger {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1002;
+  margin-top: -6px;
+}
+
+.burger-bar {
+  position: relative;
+  width: 43px;
+  height: 5.4px;
+  background-color: var(--hamburger-color);
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.burger-bar::before,
+.burger-bar::after {
+  content: "";
+  position: absolute;
+  width: 43px;
+  height: 5.4px;
+  border-radius: 999px;
+  background-color: var(--hamburger-color);
+  transition: all 0.3s ease;
+}
+
+.burger-bar::before {
+  top: -10.8px;
+}
+
+.burger-bar::after {
+  top: 10.8px;
+}
+
+#menu-toggle:checked ~ .container .overlay-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+#menu-toggle:checked ~ .container .top-controls .hamburger .burger-bar {
+  transform: rotate(135deg);
+}
+
+#menu-toggle:checked ~ .container .top-controls .hamburger .burger-bar::before,
+#menu-toggle:checked ~ .container .top-controls .hamburger .burger-bar::after {
+  top: 0;
+  transform: rotate(90deg);
+}

@@ -2,7 +2,7 @@
 .page-title {
   text-align: center;
   font-size: 3rem;
-  margin-top: 0rem;
+  margin-top: 6.5rem;
   color: var(--text-color);
 }
 
@@ -60,7 +60,7 @@ button[type="submit"]:hover {
   }
   .page-title {
     font-size: 2rem;
-    margin: 0 auto -0.75rem auto;
+    margin: 6.5rem auto 0rem auto;
     text-align: center;
   }
   .content-box {
@@ -151,6 +151,10 @@ html, body {
   padding: 15px 20px;
   box-sizing: border-box;
   z-index: 1001;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-color);
 }
 /* ========== VARIABLES ========== */
 :root {
@@ -200,7 +204,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem;
   background-color: var(--bg-color);
   color: var(--text-color);
   box-sizing: border-box;
@@ -483,7 +487,7 @@ nav a {
     align-items: center;
     padding: 1.5rem 1rem;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     margin-bottom: 1rem;
     max-height: none;
     max-width: 100%;

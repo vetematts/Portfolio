@@ -12,8 +12,8 @@
 <body style="background-color: var(--bg-color); color: var(--text-color);">
   <input type="checkbox" id="dark-toggle" hidden>
   <input type="checkbox" id="menu-toggle" hidden>
-  <div class="container">
-    <div class="header-bar">
+  <div class="container" style="padding-top: 100px; display: flex; flex-direction: column; min-height: 100vh;">
+    <div class="header-bar" style="position: fixed; top: 0; left: 0; right: 0; background-color: var(--bg-color); z-index: 1001;">
       <div class="branding">
         <a href="index.html">
           <img class="logo light-logo" src="images/M-Logo-Light.svg" alt="Matt Cicala logo Light" />
@@ -39,7 +39,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
-    <main style="background-color: var(--bg-color); color: var(--text-color);">
+    <main style="background-color: var(--bg-color); color: var(--text-color); flex: 1;">
       <h2 class="about-title">About Me</h2>
       <div class="about-grid">
         <div class="about-card card-1">
@@ -62,8 +62,8 @@
   <p>In my downtime, I’m usually watching movies (and probably overthinking them), working out, or doing a bit of bouldering. I’m into anything that’s hands-on, a little challenging, and a good time.</p>
 </div>
     </main>
-    <footer style="position: relative;">
-      <p>&copy; 2025 Matt Cicala.</p>
+    <footer style="position: relative; margin-top: auto;">
+      <p class="footer-credit">&copy; 2025 Matt Cicala.</p>
     </footer>
   </div>
 </body>

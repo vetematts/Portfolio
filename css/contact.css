@@ -551,3 +551,7 @@ footer {
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
 }
+
+footer .footer-credit {
+  color: #e7d8bb !important;
+}

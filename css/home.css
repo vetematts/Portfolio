@@ -21,6 +21,7 @@ html, body {
   --highlight-color: #2d3e5c; /* denim blue */
   --box-color: rgba(255, 255, 255, 0.4); /* soft beige glass */
   --hamburger-color: #564537;
+    background: #0d1a33;
 }
 
 /* ========== BASE STYLES ========== */
@@ -49,6 +50,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
+  color: #e7d8bb;
 }
 
 /* ========== LAYOUT ========== */

@@ -45,7 +45,7 @@
           <div class="intro-text">
             <h2>Hi, I'm Matt 👋</h2>
             <p>Learning full-stack development,<br>
-              <span class="typewriter">one line at a time.</span>
+              <span class="typewriter" data-text="one line at a time." aria-label="one line at a time."></span>
             </p>
             <div class="social-links">
               <a href="https://x.com/vetematts" target="_blank">
@@ -71,5 +71,47 @@
     </footer>
   </div>
     
+  <script>
+    (() => {
+      const typewriter = document.querySelector(".typewriter");
+      if (!typewriter) return;
+
+      const fullText = typewriter.dataset.text || "";
+      const typeDelay = 90;
+      const deleteDelay = 65;
+      const holdDelay = 1300;
+      const restartDelay = 350;
+
+      let index = 0;
+      let deleting = false;
+
+      const tick = () => {
+        typewriter.textContent = fullText.slice(0, index);
+
+        if (!deleting && index < fullText.length) {
+          index += 1;
+          setTimeout(tick, typeDelay);
+          return;
+        }
+
+        if (!deleting && index === fullText.length) {
+          deleting = true;
+          setTimeout(tick, holdDelay);
+          return;
+        }
+
+        if (deleting && index > 0) {
+          index -= 1;
+          setTimeout(tick, deleteDelay);
+          return;
+        }
+
+        deleting = false;
+        setTimeout(tick, restartDelay);
+      };
+
+      tick();
+    })();
+  </script>
 </body>
 </html>

@@ -62,3 +62,28 @@ body.dark-mode {
 .toggle-label {
   position: static;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  pointer-events: none;
+  opacity: 0;
+  background: #e7d8bb;
+  transition: opacity 320ms ease;
+}
+
+body.dark-mode::before {
+  background: #0d1a33;
+}
+
+body.theme-switching::before {
+  opacity: 0.32;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    transition: none;
+  }
+}

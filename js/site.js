@@ -1,7 +1,10 @@
 (() => {
   const THEME_KEY = "portfolio:darkMode";
+  const THEME_FADE_MS = 320;
 
   const darkToggle = document.querySelector("#dark-toggle");
+  let themeFadeTimer;
+
   const applyDarkMode = (enabled) => {
     if (darkToggle) {
       darkToggle.checked = enabled;
@@ -21,7 +24,16 @@
 
     darkToggle.addEventListener("change", () => {
       const enabled = darkToggle.checked;
-      applyDarkMode(enabled);
+
+      document.body.classList.add("theme-switching");
+      clearTimeout(themeFadeTimer);
+      requestAnimationFrame(() => {
+        applyDarkMode(enabled);
+      });
+      themeFadeTimer = setTimeout(() => {
+        document.body.classList.remove("theme-switching");
+      }, THEME_FADE_MS);
+
       try {
         localStorage.setItem(THEME_KEY, String(enabled));
       } catch (_) {

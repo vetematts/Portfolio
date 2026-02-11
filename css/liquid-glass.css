@@ -23,8 +23,17 @@
 }
 
 body.dark-mode .glass-surface {
-  border-color: rgba(231, 216, 187, 0.38);
+  border-color: rgba(159, 179, 236, 0.38);
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(231, 216, 187, 0.2);
+    inset 0 1px 0 rgba(159, 179, 236, 0.2);
+}
+
+.overlay-menu ul li a {
+  font-weight: 600;
+}
+
+.overlay-menu ul li a:hover,
+.overlay-menu ul li a.current-page {
+  font-weight: 600;
 }

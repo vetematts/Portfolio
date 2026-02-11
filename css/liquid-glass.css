@@ -1,0 +1,30 @@
+.glass-surface {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.12) 100%),
+    var(--box-color);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+  box-shadow:
+    0 10px 22px rgba(13, 26, 51, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.glass-surface::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(130% 70% at 6% 0%, rgba(255, 255, 255, 0.26), transparent 58%),
+    radial-gradient(110% 60% at 100% 100%, rgba(255, 255, 255, 0.12), transparent 62%);
+}
+
+body.dark-mode .glass-surface {
+  border-color: rgba(231, 216, 187, 0.38);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(231, 216, 187, 0.2);
+}

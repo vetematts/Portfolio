@@ -208,12 +208,12 @@ html, body {
 }
 /* ========== VARIABLES ========== */
 :root {
-  --bg-color: #efe3cc;        /* soft beige */
+  --bg-color: #e7d8bb;        /* soft beige */
   --text-color: #0d1a33;      /* deep navy */
-  --accent-color: #6a5542;    /* warm tan */
-  --highlight-color: #8c6f56; /* denim blue */
+  --accent-color: #564537;    /* warm tan */
+  --highlight-color: #2d3e5c; /* denim blue */
   --box-color: rgba(255, 255, 255, 0.4); /* soft beige glass */
-  --hamburger-color: #6a5542;
+  --hamburger-color: #564537;
 background: #0d1a33;
 }
 
@@ -380,7 +380,7 @@ main {
 .overlay-menu ul li a.current-page {
   position: relative;
   font-weight: bold;
-  color: #8c6f56;
+  color: var(--highlight-color);
 }
 
 .overlay-menu ul li a.current-page::after {
@@ -390,9 +390,9 @@ main {
   bottom: -6px;
   width: 100%;
   height: 3px;
-  background: #8c6f56;
+  background: var(--highlight-color);
   border-radius: 999px;
-  box-shadow: 0 0 8px #8c6f56;
+  box-shadow: 0 0 8px var(--highlight-color);
   animation: pulse-glow 1.5s infinite alternate;
 }
 
@@ -421,7 +421,7 @@ main {
 
 footer {
   background-color: var(--accent-color);
-  color: #efe3cc;
+  color: #e7d8bb;
   text-align: center;
   padding: 20px;
   margin-top: auto;

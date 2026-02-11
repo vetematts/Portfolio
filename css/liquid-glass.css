@@ -31,9 +31,16 @@ body.dark-mode .glass-surface {
 
 .overlay-menu ul li a {
   font-weight: 600;
+  transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
 .overlay-menu ul li a:hover,
 .overlay-menu ul li a.current-page {
   font-weight: 600;
+}
+
+.overlay-menu ul li a:hover {
+  color: var(--highlight-color);
+  opacity: 0.88;
+  transform: translateY(-1px);
 }

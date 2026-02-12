@@ -55,9 +55,9 @@ body.dark-mode .logo.dark-logo {
   display: block;
   overflow: visible;
   color: #1a2648;
-  transform: scale(1);
+  transform: none;
   transform-origin: 50% 50%;
-  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), color 240ms ease;
+  transition: color var(--theme-transition);
 }
 
 .theme-icon .theme-rays {
@@ -65,40 +65,35 @@ body.dark-mode .logo.dark-logo {
   stroke-width: 1.9;
   stroke-linecap: round;
   transform-origin: 50% 50%;
-  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms ease;
+  transition: transform var(--theme-transition), opacity var(--theme-transition);
 }
 
 .theme-icon .theme-sun {
   fill: currentColor;
-  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--theme-transition);
   transform-origin: 50% 50%;
 }
 
 .theme-icon .theme-cut {
   fill: var(--bg-color);
-  transform: translate(12px, -12px);
+  transform: translate(14px, -14px);
   transform-origin: 50% 50%;
-  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--theme-transition), fill var(--theme-transition);
 }
 
-#dark-toggle:checked ~ .container .theme-icon,
 body.dark-mode .theme-icon {
   color: #dbe6ff;
-  transform: scale(1.68);
 }
 
-#dark-toggle:checked ~ .container .theme-icon .theme-rays,
 body.dark-mode .theme-icon .theme-rays {
   opacity: 0;
-  transform: scale(0.2);
+  transform: scale(0.82);
 }
 
-#dark-toggle:checked ~ .container .theme-icon .theme-sun,
 body.dark-mode .theme-icon .theme-sun {
-  transform: scale(0.96);
+  transform: scale(1.32);
 }
 
-#dark-toggle:checked ~ .container .theme-icon .theme-cut,
 body.dark-mode .theme-icon .theme-cut {
   transform: translate(0, 0);
 }

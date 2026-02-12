@@ -1,3 +1,8 @@
+/* Shared motion timing for theme changes */
+:root {
+  --theme-transition: 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 body.dark-mode {
   --bg-color: #0d1a33;
   --text-color: #dbe6ff;
@@ -8,17 +13,7 @@ body.dark-mode {
   background-color: var(--bg-color);
 }
 
-#dark-toggle:checked ~ .container {
-  --bg-color: #0d1a33;
-  --text-color: #dbe6ff;
-  --accent-color: #1a2648;
-  --highlight-color: #9fb3ec;
-  --box-color: rgba(159, 179, 236, 0.2);
-  --hamburger-color: #dbe6ff;
-  background-color: var(--bg-color);
-}
-
-#dark-toggle:checked ~ .container .social-links {
+body.dark-mode .social-links {
   filter: invert(1);
 }
 
@@ -31,11 +26,11 @@ body.dark-mode {
   display: inline-block;
 }
 
-#dark-toggle:checked ~ .container .logo.light-logo {
+body.dark-mode .logo.light-logo {
   display: none;
 }
 
-#dark-toggle:checked ~ .container .logo.dark-logo {
+body.dark-mode .logo.dark-logo {
   display: inline-block;
 }
 
@@ -86,21 +81,25 @@ body.dark-mode {
   transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-#dark-toggle:checked ~ .container .theme-icon {
+#dark-toggle:checked ~ .container .theme-icon,
+body.dark-mode .theme-icon {
   color: #dbe6ff;
   transform: scale(1.68);
 }
 
-#dark-toggle:checked ~ .container .theme-icon .theme-rays {
+#dark-toggle:checked ~ .container .theme-icon .theme-rays,
+body.dark-mode .theme-icon .theme-rays {
   opacity: 0;
   transform: scale(0.2);
 }
 
-#dark-toggle:checked ~ .container .theme-icon .theme-sun {
+#dark-toggle:checked ~ .container .theme-icon .theme-sun,
+body.dark-mode .theme-icon .theme-sun {
   transform: scale(0.96);
 }
 
-#dark-toggle:checked ~ .container .theme-icon .theme-cut {
+#dark-toggle:checked ~ .container .theme-icon .theme-cut,
+body.dark-mode .theme-icon .theme-cut {
   transform: translate(0, 0);
 }
 
@@ -112,27 +111,79 @@ body.dark-mode {
   overflow: visible;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 1400;
-  pointer-events: none;
-  opacity: 0;
-  background: #e7d8bb;
-  transition: opacity 320ms ease;
+/* Smoothly animate theme-sensitive surfaces and text */
+body,
+.container,
+.header-bar,
+main,
+footer,
+.content-box,
+.about-card,
+.mobile-about,
+.overlay-menu,
+.overlay-menu::before,
+.logo-text,
+.page-title,
+.about-title,
+.skills-title,
+h1, h2, h3, h4, h5, h6, p, span, a, li, label,
+input, textarea, button,
+.burger-bar,
+.burger-bar::before,
+.burger-bar::after,
+.glass-surface,
+.social-links,
+.social-icon,
+.social-icon img {
+  transition:
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition);
 }
 
-body.dark-mode::before {
-  background: #0d1a33;
+/* Form controls get proper dark styling instead of staying bright. */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode textarea {
+  background-color: rgba(219, 230, 255, 0.08);
+  color: var(--text-color);
+  border-color: rgba(219, 230, 255, 0.35);
 }
 
-body.theme-switching::before {
-  opacity: 0.32;
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: rgba(219, 230, 255, 0.7);
+}
+
+body.dark-mode button[type="submit"] {
+  background-color: #9fb3ec;
+  color: #0d1a33;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body::before {
+  body,
+  .container,
+  .header-bar,
+  main,
+  footer,
+  .content-box,
+  .about-card,
+  .mobile-about,
+  .overlay-menu,
+  .overlay-menu::before,
+  .logo-text,
+  .page-title,
+  .about-title,
+  .skills-title,
+  h1, h2, h3, h4, h5, h6, p, span, a, li, label,
+  input, textarea, button,
+  .burger-bar,
+  .burger-bar::before,
+  .burger-bar::after,
+  .glass-surface,
+  .social-links,
+  .social-icon,
+  .social-icon img {
     transition: none;
   }
 }

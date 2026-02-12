@@ -1,38 +1,42 @@
 (() => {
   const THEME_KEY = "portfolio:darkMode";
-  const THEME_FADE_MS = 320;
+  const DARK_THEME_COLOR = "#0d1a33";
+  const LIGHT_THEME_COLOR = "#e7d8bb";
 
   const darkToggle = document.querySelector("#dark-toggle");
-  let themeFadeTimer;
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  let hasStoredPreference = false;
 
   const applyDarkMode = (enabled) => {
     if (darkToggle) {
       darkToggle.checked = enabled;
     }
     document.body.classList.toggle("dark-mode", enabled);
+    document.documentElement.style.colorScheme = enabled ? "dark" : "light";
+    if (themeMeta) {
+      themeMeta.setAttribute("content", enabled ? DARK_THEME_COLOR : LIGHT_THEME_COLOR);
+    }
   };
 
-  if (darkToggle) {
-    let savedDarkMode = false;
-    try {
-      savedDarkMode = localStorage.getItem(THEME_KEY) === "true";
-    } catch (_) {
-      savedDarkMode = false;
+  let initialDarkMode = mediaQuery.matches;
+  try {
+    const stored = localStorage.getItem(THEME_KEY);
+    if (stored === "true" || stored === "false") {
+      hasStoredPreference = true;
+      initialDarkMode = stored === "true";
     }
+  } catch (_) {
+    hasStoredPreference = false;
+  }
 
-    applyDarkMode(savedDarkMode);
+  applyDarkMode(initialDarkMode);
 
+  if (darkToggle) {
     darkToggle.addEventListener("change", () => {
       const enabled = darkToggle.checked;
-
-      document.body.classList.add("theme-switching");
-      clearTimeout(themeFadeTimer);
-      requestAnimationFrame(() => {
-        applyDarkMode(enabled);
-      });
-      themeFadeTimer = setTimeout(() => {
-        document.body.classList.remove("theme-switching");
-      }, THEME_FADE_MS);
+      hasStoredPreference = true;
+      applyDarkMode(enabled);
 
       try {
         localStorage.setItem(THEME_KEY, String(enabled));
@@ -40,6 +44,19 @@
         // Ignore storage failures (private mode, blocked storage, etc.).
       }
     });
+  }
+
+  const handleSystemThemeChange = (event) => {
+    if (hasStoredPreference) {
+      return;
+    }
+    applyDarkMode(event.matches);
+  };
+
+  if (typeof mediaQuery.addEventListener === "function") {
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+  } else if (typeof mediaQuery.addListener === "function") {
+    mediaQuery.addListener(handleSystemThemeChange);
   }
 
   const year = new Date().getFullYear();

@@ -8,14 +8,6 @@ body.dark-mode {
   background-color: var(--bg-color);
 }
 
-#dark-toggle:checked ~ .container .light-toggle {
-  display: none;
-}
-
-#dark-toggle:checked ~ .container .dark-toggle {
-  display: inline-block;
-}
-
 #dark-toggle:checked ~ .container {
   --bg-color: #0d1a33;
   --text-color: #dbe6ff;
@@ -47,8 +39,12 @@ body.dark-mode {
   display: inline-block;
 }
 
-.light-toggle {
+.moon-toggle {
   display: inline-block;
+}
+
+#dark-toggle:checked ~ .container .moon-toggle {
+  filter: brightness(0) invert(92%) sepia(8%) saturate(351%) hue-rotate(184deg) brightness(102%) contrast(100%);
 }
 
 .top-controls {

@@ -10,6 +10,7 @@ body.dark-mode {
   --highlight-color: #9fb3ec;
   --box-color: rgba(159, 179, 236, 0.2);
   --hamburger-color: #dbe6ff;
+  --logo-color: #e4d9be;
   background-color: var(--bg-color);
 }
 
@@ -17,21 +18,8 @@ body.dark-mode .social-links {
   filter: invert(1);
 }
 
-.logo.light-logo,
-.logo.dark-logo {
-  display: none;
-}
-
-.logo.light-logo {
-  display: inline-block;
-}
-
-body.dark-mode .logo.light-logo {
-  display: none;
-}
-
-body.dark-mode .logo.dark-logo {
-  display: inline-block;
+.branding .logo {
+  color: var(--logo-color, #534639);
 }
 
 .toggle-label {

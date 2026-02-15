@@ -9,8 +9,8 @@ body.dark-mode {
   --accent-color: #1a2648;
   --highlight-color: #9fb3ec;
   --box-color: rgba(159, 179, 236, 0.2);
-  --hamburger-color: #dbe6ff;
-  --logo-color: #e4d9be;
+  --hamburger-color: #9fb3ec;
+  --logo-color: #9fb3ec;
   background-color: var(--bg-color);
 }
 
@@ -19,7 +19,11 @@ body.dark-mode .social-links {
 }
 
 .branding .logo {
-  color: var(--logo-color, #534639);
+  color: var(--logo-color, var(--hamburger-color, #564537));
+}
+
+.logo-text {
+  color: var(--hamburger-color, #564537);
 }
 
 .toggle-label {
@@ -42,7 +46,7 @@ body.dark-mode .social-links {
   height: 100%;
   display: block;
   overflow: visible;
-  color: #1a2648;
+  color: var(--hamburger-color, #564537);
   transform: none;
   transform-origin: 50% 50%;
   transition: color var(--theme-transition);

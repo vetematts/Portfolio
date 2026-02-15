@@ -74,7 +74,7 @@ body.dark-mode .social-links {
 }
 
 body.dark-mode .theme-icon {
-  color: #dbe6ff;
+  color: var(--hamburger-color, #9fb3ec);
 }
 
 body.dark-mode .theme-icon .theme-rays {

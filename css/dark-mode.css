@@ -1,6 +1,7 @@
 /* Shared motion timing for theme changes */
 :root {
   --theme-transition: 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  --footer-credit-color: #e7d8bb;
 }
 
 body.dark-mode {
@@ -11,6 +12,7 @@ body.dark-mode {
   --box-color: rgba(159, 179, 236, 0.2);
   --hamburger-color: #9fb3ec;
   --logo-color: #9fb3ec;
+  --footer-credit-color: #9fb3ec;
   background-color: var(--bg-color);
 }
 
@@ -100,7 +102,7 @@ body.dark-mode .theme-icon .theme-cut {
 
 footer,
 .footer-credit {
-  color: var(--text-color) !important;
+  color: var(--footer-credit-color) !important;
 }
 
 /* Smoothly animate theme-sensitive surfaces and text */

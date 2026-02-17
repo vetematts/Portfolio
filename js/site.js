@@ -2,11 +2,24 @@
   const THEME_KEY = "portfolio:darkMode";
   const DARK_THEME_COLOR = "#0d1a33";
   const LIGHT_THEME_COLOR = "#e7d8bb";
+  const DARK_FAVICON = "images/favicon-dark.png";
+  const LIGHT_FAVICON = "images/favicon-light.png";
 
   const darkToggle = document.querySelector("#dark-toggle");
   const themeMeta = document.querySelector('meta[name="theme-color"]');
+  let faviconLink = document.querySelector('link[rel="icon"]');
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
   let hasStoredPreference = false;
+
+  const setFavicon = (enabled) => {
+    if (!faviconLink) {
+      faviconLink = document.createElement("link");
+      faviconLink.rel = "icon";
+      faviconLink.type = "image/png";
+      document.head.appendChild(faviconLink);
+    }
+    faviconLink.setAttribute("href", enabled ? DARK_FAVICON : LIGHT_FAVICON);
+  };
 
   const applyDarkMode = (enabled) => {
     if (darkToggle) {
@@ -17,6 +30,7 @@
     if (themeMeta) {
       themeMeta.setAttribute("content", enabled ? DARK_THEME_COLOR : LIGHT_THEME_COLOR);
     }
+    setFavicon(enabled);
   };
 
   let initialDarkMode = mediaQuery.matches;

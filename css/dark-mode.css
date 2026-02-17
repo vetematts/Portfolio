@@ -98,6 +98,11 @@ body.dark-mode .theme-icon .theme-cut {
   overflow: visible;
 }
 
+footer,
+.footer-credit {
+  color: var(--text-color) !important;
+}
+
 /* Smoothly animate theme-sensitive surfaces and text */
 body,
 .container,

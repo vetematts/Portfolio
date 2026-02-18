@@ -30,6 +30,22 @@ body.dark-mode .social-links {
   gap: 0.6rem;
   text-decoration: none;
   color: inherit;
+  border-radius: 8px;
+}
+
+.branding > a:hover .logo {
+  transform: scale(1.08);
+}
+
+.branding > a:hover .logo-text {
+  opacity: 0.86;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.branding > a:focus-visible {
+  outline: 2px solid var(--highlight-color);
+  outline-offset: 4px;
 }
 
 .logo-text {

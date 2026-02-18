@@ -100,6 +100,15 @@ body.dark-mode .theme-icon .theme-cut {
   overflow: visible;
 }
 
+/* Preserve menu overlay fade animation (was overridden by global transitions). */
+.overlay-menu {
+  transition:
+    opacity 300ms ease-in-out,
+    background-color var(--theme-transition),
+    color var(--theme-transition),
+    border-color var(--theme-transition);
+}
+
 footer,
 .footer-credit {
   color: var(--footer-credit-color) !important;
@@ -114,7 +123,6 @@ footer,
 .content-box,
 .about-card,
 .mobile-about,
-.overlay-menu,
 .overlay-menu::before,
 .logo-text,
 .page-title,
@@ -160,7 +168,6 @@ body.dark-mode button[type="submit"] {
   .content-box,
   .about-card,
   .mobile-about,
-  .overlay-menu,
   .overlay-menu::before,
   .logo-text,
   .page-title,

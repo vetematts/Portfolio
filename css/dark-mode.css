@@ -39,8 +39,6 @@ body.dark-mode .social-links {
 
 .branding > a:hover .logo-text {
   opacity: 0.86;
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
 .branding > a:focus-visible {

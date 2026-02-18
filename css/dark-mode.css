@@ -24,6 +24,14 @@ body.dark-mode .social-links {
   color: var(--logo-color, var(--hamburger-color, #564537));
 }
 
+.branding > a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+}
+
 .logo-text {
   color: var(--hamburger-color, #564537);
 }

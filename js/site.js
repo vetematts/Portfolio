@@ -4,6 +4,10 @@
   const LIGHT_THEME_COLOR = "#e7d8bb";
   const DARK_FAVICON = "images/favicon-dark.png";
   const LIGHT_FAVICON = "images/favicon-light.png";
+  const FIGMA_ICON_LIGHT = "images/figma-icon.svg";
+  const FIGMA_ICON_DARK = "images/figma-icon-dark.svg";
+  const OFFICE_ICON_LIGHT = "images/office-icon.svg";
+  const OFFICE_ICON_DARK = "images/office-icon-dark.svg";
 
   const darkToggle = document.querySelector("#dark-toggle");
   const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -21,6 +25,20 @@
     faviconLink.setAttribute("href", enabled ? DARK_FAVICON : LIGHT_FAVICON);
   };
 
+  const setSkillsIcons = (enabled) => {
+    const updates = [
+      [FIGMA_ICON_LIGHT, FIGMA_ICON_DARK],
+      [OFFICE_ICON_LIGHT, OFFICE_ICON_DARK],
+    ];
+
+    updates.forEach(([lightSrc, darkSrc]) => {
+      const selector = `img[src$="${lightSrc}"], img[src$="${darkSrc}"]`;
+      document.querySelectorAll(selector).forEach((img) => {
+        img.setAttribute("src", enabled ? darkSrc : lightSrc);
+      });
+    });
+  };
+
   const applyDarkMode = (enabled) => {
     if (darkToggle) {
       darkToggle.checked = enabled;
@@ -31,6 +49,7 @@
       themeMeta.setAttribute("content", enabled ? DARK_THEME_COLOR : LIGHT_THEME_COLOR);
     }
     setFavicon(enabled);
+    setSkillsIcons(enabled);
   };
 
   let initialDarkMode = mediaQuery.matches;

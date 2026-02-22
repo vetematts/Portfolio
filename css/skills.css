@@ -26,6 +26,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  width: 112px;
 }
 
 .skill p {
@@ -47,6 +48,7 @@
 .skills-icons img {
   width: 60px;
   height: 60px;
+  display: block;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -383,6 +385,9 @@ nav a {
   .skills-icons img {
     width: 48px;
     height: 48px;
+  }
+  .skill {
+    width: 96px;
   }
   .skills-title {
     margin-top: -8rem;

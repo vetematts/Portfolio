@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BackgroundRain } from "@/components/BackgroundRain";
+import { HeroNamePrompt } from "@/components/HeroNamePrompt";
 import { ProjectCarousel } from "@/components/ProjectCarousel";
 import { SocialLinks } from "@/components/SocialLinks";
 
@@ -62,15 +63,19 @@ export default function Home() {
             </div>
             <SocialLinks variant="compact" />
           </div>
-          <div className="hero-atmosphere-note" aria-hidden="true">
-            <span className="ambient-orbit">
-              <i />
-              <i />
-              <i />
-            </span>
-            <span>
-              Move through the rain.<small>A little code. A little play.</small>
-            </span>
+          <div className="hero-signal">
+            <HeroNamePrompt />
+            <div className="hero-atmosphere-note" aria-hidden="true">
+              <span className="ambient-orbit">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span>
+                Move through the rain.
+                <small>A little code. A little play.</small>
+              </span>
+            </div>
           </div>
         </section>
         <section

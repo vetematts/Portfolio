@@ -222,6 +222,7 @@ p {
   color: var(--accent);
 }
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 220px;
   align-items: end;
@@ -277,6 +278,145 @@ h1 > span {
   flex-wrap: wrap;
   gap: 24px;
   margin-top: 32px;
+}
+.hero-signal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 48px;
+  padding-top: 48px;
+}
+.hero-name-prompt {
+  color: var(--accent);
+  font: 46px/1.2 var(--font-mono);
+  text-shadow: 0 0 30px #9fb3ec30;
+}
+.prompt-text {
+  display: inline-flex;
+  gap: 1ch;
+}
+.prompt-prefix {
+  color: var(--muted);
+}
+.prompt-name {
+  position: relative;
+  display: inline-block;
+  width: 5ch;
+  height: 1.2em;
+}
+.prompt-char,
+.prompt-cursor-position {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.prompt-char {
+  opacity: 0;
+  animation-duration: 8s;
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+}
+.prompt-m {
+  animation-name: prompt-type-m;
+}
+.prompt-a {
+  left: 1ch;
+  animation-name: prompt-type-a;
+}
+.prompt-t1 {
+  left: 2ch;
+  animation-name: prompt-type-t1;
+}
+.prompt-t2 {
+  left: 3ch;
+  animation-name: prompt-type-t2;
+}
+.prompt-cursor-position {
+  animation: prompt-advance 8s step-end infinite;
+}
+.prompt-cursor {
+  display: inline-block;
+  animation: prompt-blink 1s step-end infinite;
+}
+@keyframes prompt-type-m {
+  0%,
+  10%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  11%,
+  95% {
+    opacity: 1;
+  }
+}
+@keyframes prompt-type-a {
+  0%,
+  15%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  16%,
+  95% {
+    opacity: 1;
+  }
+}
+@keyframes prompt-type-t1 {
+  0%,
+  20%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  21%,
+  95% {
+    opacity: 1;
+  }
+}
+@keyframes prompt-type-t2 {
+  0%,
+  25%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  26%,
+  95% {
+    opacity: 1;
+  }
+}
+@keyframes prompt-advance {
+  0%,
+  96%,
+  100% {
+    transform: translateX(0);
+  }
+  11% {
+    transform: translateX(1ch);
+  }
+  16% {
+    transform: translateX(2ch);
+  }
+  21% {
+    transform: translateX(3ch);
+  }
+  26%,
+  95% {
+    transform: translateX(4ch);
+  }
+}
+@keyframes prompt-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 .hero-atmosphere-note {
   display: flex;
@@ -998,6 +1138,9 @@ h2 > span {
   .hero-atmosphere-note {
     font-size: 9px;
   }
+  .hero-name-prompt {
+    font-size: 32px;
+  }
   .hero-atmosphere-note small {
     font-size: 8px;
   }
@@ -1061,13 +1204,18 @@ h2 > span {
   .hero-description {
     max-width: 470px;
   }
+  .hero-signal {
+    position: absolute;
+    top: 60px;
+    right: 24px;
+    padding-top: 0;
+    gap: 0;
+  }
+  .hero-name-prompt {
+    font-size: 18px;
+  }
   .hero-atmosphere-note {
-    align-items: flex-start;
-    flex-direction: row;
-    gap: 12px;
-    padding-bottom: 0;
-    font-size: 9px;
-    text-align: left;
+    display: none;
   }
   .hero-atmosphere-note small {
     display: none;
@@ -1257,6 +1405,9 @@ h2 > span {
   }
 }
 @media (max-width: 380px) {
+  .hero-signal {
+    right: 20px;
+  }
   .page-width {
     padding-inline: 20px;
   }
@@ -1319,6 +1470,13 @@ h2 > span {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .prompt-char,
+  .prompt-cursor {
+    opacity: 1;
+  }
+  .prompt-cursor-position {
+    transform: translateX(4ch);
+  }
   html {
     scroll-behavior: auto;
   }

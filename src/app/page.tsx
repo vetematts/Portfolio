@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BackgroundRain } from "@/components/BackgroundRain";
 import { ProjectCarousel } from "@/components/ProjectCarousel";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export default function Home() {
   return (
@@ -59,6 +60,7 @@ export default function Home() {
                 Say hello <span aria-hidden="true">↗</span>
               </a>
             </div>
+            <SocialLinks variant="compact" />
           </div>
           <div className="hero-atmosphere-note" aria-hidden="true">
             <span className="ambient-orbit">
@@ -144,24 +146,7 @@ export default function Home() {
           <a className="contact-email" href="mailto:mattcicala@icloud.com">
             mattcicala@icloud.com <span aria-hidden="true">↗</span>
           </a>
-          <div className="social-links">
-            <a
-              href="https://github.com/vetematts"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub <span aria-hidden="true">↗</span>
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/matthewcicala"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn <span aria-hidden="true">↗</span>
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </div>
+          <SocialLinks />
         </section>
       </main>
       <footer className="site-footer page-width">

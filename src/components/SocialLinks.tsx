@@ -2,13 +2,11 @@ const profiles = [
   {
     name: "GitHub",
     url: "https://github.com/vetematts",
-    detail: "Code & side projects",
     icon: "github",
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/matthewcicala",
-    detail: "Let’s connect",
     icon: "linkedin",
   },
 ];
@@ -44,9 +42,9 @@ function ProfileIcon({ platform }: { platform: string }) {
 }
 
 export function SocialLinks({
-  variant = "cards",
+  variant = "full",
 }: {
-  variant?: "compact" | "cards";
+  variant?: "compact" | "full";
 }) {
   return (
     <nav
@@ -65,7 +63,6 @@ export function SocialLinks({
           </span>
           <span className="profile-label">
             <strong>{profile.name}</strong>
-            {variant === "cards" && <small>{profile.detail}</small>}
           </span>
           <span className="profile-arrow" aria-hidden="true">
             ↗

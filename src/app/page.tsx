@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { BrandSignal } from "@/components/BrandSignal";
+import { BackgroundRain } from "@/components/BackgroundRain";
 import { ProjectChapters } from "@/components/ProjectChapters";
+import { projects } from "@/data/projects";
 
 export default function Home() {
   return (
@@ -55,18 +56,26 @@ export default function Home() {
               <a className="button primary" href="#work">
                 Explore my work <span aria-hidden="true">↓</span>
               </a>
-              <a
-                className="text-link"
-                href="/matthew-cicala-resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                View résumé <span aria-hidden="true">↗</span>
-                <span className="sr-only"> (PDF, opens in a new tab)</span>
+              <a className="text-link" href="mailto:mattcicala@icloud.com">
+                Say hello <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
-          <BrandSignal />
+          <nav className="hero-index" aria-label="Jump to a project">
+            <p className="eyebrow">A FEW THINGS I’VE BUILT</p>
+            {projects.map((project) => (
+              <a href={`#project-${project.id}`} key={project.id}>
+                <span className="index-number">{project.number}</span>
+                <span>
+                  {project.name}
+                  <small>{project.category}</small>
+                </span>
+                <span className="index-arrow" aria-hidden="true">
+                  ↘
+                </span>
+              </a>
+            ))}
+          </nav>
         </section>
         <section
           className="work-section page-width"
@@ -77,16 +86,13 @@ export default function Home() {
             <div>
               <p className="eyebrow">SELECTED WORK</p>
               <h2 id="work-heading">
-                Three projects.
-                <br />
-                <span>Three different problems.</span>
+                Made to be <span>explored.</span>
               </h2>
             </div>
             <p>
-              Open a chapter.
+              Take a look around.
               <br />
-              Explore the interface, the system
-              <br className="desktop-break" /> and the thinking behind it.
+              There’s more beneath the surface.
             </p>
           </div>
           <ProjectChapters />
@@ -96,84 +102,34 @@ export default function Home() {
           id="about"
           aria-labelledby="about-heading"
         >
-          <div className="about-intro">
+          <div>
             <p className="eyebrow">A LITTLE ABOUT ME</p>
             <h2 id="about-heading">
-              A practical mind.
+              Curious by nature.
               <br />
-              <span>A creative background.</span>
+              <span>Practical by default.</span>
             </h2>
+          </div>
+          <div className="about-copy">
             <p>
-              Before web development, I worked across healthcare operations,
-              systems support and digital workflows. That experience shapes how
-              I build: understand the people, find the friction and make the
-              next step clearer.
+              I like interfaces that feel natural, tools that save a little
+              effort, and the process of figuring out how things fit together.
             </p>
             <p>
-              My background in film and media adds another perspective — how
-              something looks, feels and tells its story matters too.
+              From film discovery to everyday automation, I enjoy building
+              things I’d want to use. Clean design, useful details and a bit of
+              personality go a long way.
             </p>
-            <a className="text-link" href="/matthew-cicala-resume.pdf" download>
-              Download my résumé <span aria-hidden="true">↓</span>
-              <span className="sr-only"> (PDF)</span>
+            <a
+              className="text-link"
+              href="https://github.com/vetematts"
+              target="_blank"
+              rel="noreferrer"
+            >
+              See what I’m working on <span aria-hidden="true">↗</span>
+              <span className="sr-only"> (GitHub, opens in a new tab)</span>
             </a>
           </div>
-          <div className="experience">
-            <div className="experience-heading">
-              <span className="eyebrow">EXPERIENCE & EDUCATION</span>
-              <span className="experience-line" />
-            </div>
-            <article>
-              <p className="experience-meta">2019 — PRESENT</p>
-              <h3>Practice Operations Coordinator</h3>
-              <p>Nick Sheptooha Dental Practice</p>
-              <p className="experience-detail">
-                Technology implementation, internal systems support and workflow
-                improvement across a busy dental practice.
-              </p>
-            </article>
-            <article>
-              <p className="experience-meta">WEB DEVELOPMENT</p>
-              <h3>Diploma of Web Development</h3>
-              <p>Coder Academy · Completed</p>
-            </article>
-            <article>
-              <p className="experience-meta">CREATIVE FOUNDATIONS</p>
-              <h3>Film & media</h3>
-              <p>
-                Bachelor of Film & Media · Griffith University
-                <br />
-                Diploma of Screen and Media · TAFE Queensland
-              </p>
-            </article>
-          </div>
-        </section>
-        <section
-          className="capabilities page-width"
-          aria-labelledby="capabilities-heading"
-        >
-          <div>
-            <p className="eyebrow">MY TOOLKIT</p>
-            <h2 id="capabilities-heading">
-              From interface
-              <br />
-              <span>to infrastructure.</span>
-            </h2>
-          </div>
-          <dl>
-            <div>
-              <dt>Interfaces</dt>
-              <dd>HTML, CSS, JavaScript, TypeScript, React, Next.js</dd>
-            </div>
-            <div>
-              <dt>Systems</dt>
-              <dd>Node.js, Express, Python, Flask, PostgreSQL, SQLAlchemy</dd>
-            </div>
-            <div>
-              <dt>Delivery & design</dt>
-              <dd>Git, CI/CD, Docker, AWS, GCP, Terraform, Figma, Photoshop</dd>
-            </div>
-          </dl>
         </section>
         <section
           className="contact-section page-width"
@@ -211,37 +167,33 @@ export default function Home() {
               LinkedIn <span aria-hidden="true">↗</span>
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
-            <a
-              href="/matthew-cicala-resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Résumé <span aria-hidden="true">↗</span>
-              <span className="sr-only"> (PDF, opens in a new tab)</span>
-            </a>
           </div>
         </section>
       </main>
       <footer className="site-footer page-width">
-        <a
-          className="footer-brand"
-          href="#top"
-          aria-label="Matt Cicala, back to top"
-        >
-          <Image src="/brand/mc.svg" alt="" width={46} height={51} />
-          <span>Matt Cicala</span>
-        </a>
-        <a
-          className="earlier-work"
-          href="https://vetematts.github.io/Portfolio/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span>That was then.</span> My first portfolio{" "}
-          <span aria-hidden="true">↗</span>
-          <span className="sr-only"> (opens in a new tab)</span>
-        </a>
-        <span className="footer-location">Made in Brisbane.</span>
+        <div className="footer-top">
+          <a
+            className="footer-brand"
+            href="#top"
+            aria-label="Matt Cicala, back to top"
+          >
+            <Image src="/brand/mc.svg" alt="" width={46} height={51} />
+            <span>Matt Cicala</span>
+          </a>
+          <a
+            className="earlier-work"
+            href="https://vetematts.github.io/Portfolio/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            My first portfolio <span aria-hidden="true">↗</span>
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </div>
+        <div className="footer-bottom">
+          <span>Made in Brisbane.</span>
+          <BackgroundRain />
+        </div>
       </footer>
     </>
   );

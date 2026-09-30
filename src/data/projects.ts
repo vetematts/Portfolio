@@ -13,7 +13,6 @@ export type Project = {
   approach: string;
   decisions: { title: string; text: string }[];
   flow: { name: string; detail: string }[];
-  walkthrough?: { title: string; text: string; x: number; y: number }[];
   note?: string;
 };
 
@@ -63,26 +62,6 @@ export const projects: Project[] = [
         name: "PostgreSQL + TMDB",
         detail:
           "PostgreSQL stores accounts and reviews. TMDB supplies the movie information used for discovery.",
-      },
-    ],
-    walkthrough: [
-      {
-        title: "Find a film",
-        text: "Search and discovery sit together, making browsing the starting point for the experience.",
-        x: 58,
-        y: 69,
-      },
-      {
-        title: "Let the artwork lead",
-        text: "Poster-led recommendations give movie discovery a visual entry point.",
-        x: 48,
-        y: 89,
-      },
-      {
-        title: "Make it personal",
-        text: "Accounts connect movie browsing with personal reviews, supported by JWT authentication.",
-        x: 81,
-        y: 8,
       },
     ],
     note: "The demo API uses free hosting and may take a moment to wake up.",
@@ -137,26 +116,6 @@ export const projects: Project[] = [
         name: "Calendar + email",
         detail:
           "Calendar feeds let members follow events in their own calendars. Transactional email delivers form submissions.",
-      },
-    ],
-    walkthrough: [
-      {
-        title: "What’s on next",
-        text: "Date-aware event information brings the next meeting onto the homepage, where members can find it quickly.",
-        x: 37,
-        y: 76,
-      },
-      {
-        title: "Keep members informed",
-        text: "The latest newsletter is close at hand, with the archive accessible through the main navigation.",
-        x: 33,
-        y: 93,
-      },
-      {
-        title: "Find your way",
-        text: "Events, membership, galleries and resources have direct navigation links for members and visitors.",
-        x: 61,
-        y: 5,
       },
     ],
   },

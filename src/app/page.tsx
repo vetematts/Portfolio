@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { BackgroundRain } from "@/components/BackgroundRain";
-import { ProjectChapters } from "@/components/ProjectChapters";
-import { projects } from "@/data/projects";
+import { ProjectCarousel } from "@/components/ProjectCarousel";
 
 export default function Home() {
   return (
@@ -61,21 +60,16 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <nav className="hero-index" aria-label="Jump to a project">
-            <p className="eyebrow">A FEW THINGS I’VE BUILT</p>
-            {projects.map((project) => (
-              <a href={`#project-${project.id}`} key={project.id}>
-                <span className="index-number">{project.number}</span>
-                <span>
-                  {project.name}
-                  <small>{project.category}</small>
-                </span>
-                <span className="index-arrow" aria-hidden="true">
-                  ↘
-                </span>
-              </a>
-            ))}
-          </nav>
+          <div className="hero-atmosphere-note" aria-hidden="true">
+            <span className="ambient-orbit">
+              <i />
+              <i />
+              <i />
+            </span>
+            <span>
+              Move through the rain.<small>A little code. A little play.</small>
+            </span>
+          </div>
         </section>
         <section
           className="work-section page-width"
@@ -86,16 +80,16 @@ export default function Home() {
             <div>
               <p className="eyebrow">SELECTED WORK</p>
               <h2 id="work-heading">
-                Made to be <span>explored.</span>
+                A few things <span>I’ve built.</span>
               </h2>
             </div>
             <p>
-              Take a look around.
+              Different ideas.
               <br />
-              There’s more beneath the surface.
+              One curious developer.
             </p>
           </div>
-          <ProjectChapters />
+          <ProjectCarousel />
         </section>
         <section
           className="about-section page-width"

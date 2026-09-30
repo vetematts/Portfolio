@@ -36,6 +36,27 @@ The build exports a static site to `out/`. There are no server APIs, external fo
 
 ## Edit content and branding
 
+### Refresh project previews
+
+Capture the current live websites at a consistent 1280 × 720 desktop size:
+
+```sh
+# Install the screenshot browser once after npm ci.
+npx playwright install chromium
+
+# Refresh both website previews.
+npm run previews:refresh
+
+# Or refresh just CineCritic after a redesign.
+npm run previews:refresh -- cinecritic
+```
+
+The command reads URLs and image paths from `src/data/projects.ts`, follows redirects, and waits for the page fonts and visible images to load. CineCritic's movie posters must appear before capture; this allows time for its API to wake up. If a site fails to load, the current previews are retained. Readiness selectors live in `scripts/refresh-previews.ts`; update these if a redesign changes the relevant markup.
+
+Review the images in the local carousel, then commit and push to `main` to publish them. Capture runs only when requested; it is not part of the Vercel build and does not commit or push. Plex Toolkit keeps its illustrative animated preview.
+
+### Portfolio files
+
 - `src/data/projects.ts`: project descriptions, technologies, supporting case-study notes and links.
 - `src/app/page.tsx`: introduction, carousel, about and contact.
 - `src/app/globals.css`: colour tokens, typography, layout and responsive rules.

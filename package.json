@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "typecheck": "tsc --noEmit",
+    "previews:refresh": "tsx scripts/refresh-previews.ts",
     "format": "prettier --write src next.config.ts tsconfig.json package.json README.md"
   },
   "dependencies": {
@@ -17,7 +18,9 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "playwright": "^1.63.0",
     "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.0"
   }
 }

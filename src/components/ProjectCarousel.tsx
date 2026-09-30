@@ -201,6 +201,7 @@ export function ProjectCarousel() {
             (event.target as HTMLElement).closest("button, a")
           )
             return;
+          event.currentTarget.setPointerCapture(event.pointerId);
           gesture.current = {
             x: event.clientX,
             y: event.clientY,

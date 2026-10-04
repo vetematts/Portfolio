@@ -1,0 +1,105 @@
+name: Refresh project previews
+
+on:
+  schedule:
+    # Check Thursdays at 10:17 am Brisbane time (00:17 UTC).
+    # The cadence job below allows captures every other Thursday.
+    - cron: "17 0 * * 4"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: refresh-project-previews
+  cancel-in-progress: false
+
+jobs:
+  cadence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      refresh: ${{ steps.schedule.outputs.refresh }}
+    steps:
+      - name: Check two-week schedule
+        id: schedule
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            echo "refresh=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Anchor the 14-day interval to Thursday, 1 October 2026.
+          today=$(date -u -d "$(date -u +%F)" +%s)
+          anchor=$(date -u -d "2026-10-01" +%s)
+          days=$(( (today - anchor) / 86400 ))
+          if (( days >= 0 && days % 14 == 0 )); then
+            echo "refresh=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "refresh=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  refresh:
+    needs: cadence
+    if: needs.cadence.outputs.refresh == 'true'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install screenshot browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Capture live websites
+        run: npm run previews:refresh
+
+      - name: Save screenshot archive
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: project-previews-${{ github.run_id }}
+          path: public/projects/*.jpg
+          if-no-files-found: error
+          retention-days: 45
+
+      - name: Publish changed screenshots
+        id: publish
+        run: |
+          git add -- public/projects/*.jpg
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh project previews"
+          # A normal push fails safely if main changed during capture.
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Summarize refresh
+        env:
+          PREVIEWS_CHANGED: ${{ steps.publish.outputs.changed }}
+        run: |
+          if [[ "$PREVIEWS_CHANGED" == "true" ]]; then
+            echo "Updated screenshots committed and pushed to main. Vercel's connected Git integration handles deployment." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Screenshots are unchanged; no commit needed." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "A screenshot ZIP is available under Artifacts for 45 days." >> "$GITHUB_STEP_SUMMARY"

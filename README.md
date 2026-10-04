@@ -55,6 +55,18 @@ The command reads URLs and image paths from `src/data/projects.ts`, follows redi
 
 Review the images in the local carousel, then commit and push to `main` to publish them. Capture runs only when requested; it is not part of the Vercel build and does not commit or push. Plex Toolkit keeps its illustrative animated preview.
 
+### Automatic preview refresh
+
+The GitHub Actions workflow in `.github/workflows/refresh-previews.yml` captures both live websites every two weeks on alternate Thursdays at approximately 10:17 am Brisbane time, anchored to 1 October 2026 (then 15 October, 29 October, 12 November, and so on). A small weekly check skips the intervening Thursdays, keeping a true 14-day interval across month boundaries. It runs on GitHub, so your computer can be off. Commit and push the workflow to `main` to activate it.
+
+For an immediate refresh after a redesign, open this repository's **Actions → Refresh project previews → Run workflow**. The workflow installs Chromium and runs the same capture command as the local script. If either site fails, the job fails without publishing replacements.
+
+After successful captures, the workflow replaces the existing JPEGs and automatically commits and pushes changed images to `main` with the message `Refresh project previews`. Unchanged images do not create a commit. The connected Vercel Git integration then builds and publishes the portfolio, without a manual review step or additional deployment credentials. See [Vercel's Git deployment documentation](https://vercel.com/docs/deployments).
+
+Runs also save a **project-previews** ZIP under **Artifacts**, retained for 45 days. These archives are outside the repository and expire automatically. The working tree keeps only the current screenshot files; earlier committed versions remain in Git history. If another commit reaches `main` during capture, the job's normal push fails safely; rerun it from the Actions tab. Branch rules must permit this workflow to push to `main`.
+
+GitHub can delay scheduled runs. In public repositories, GitHub also disables schedules after 60 days without repository activity; re-enable the workflow from the Actions tab if that happens. See [GitHub's scheduling documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+
 ### Portfolio files
 
 - `src/data/projects.ts`: project descriptions, technologies, supporting case-study notes and links.

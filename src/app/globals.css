@@ -736,6 +736,132 @@ h2 > span {
 .project-links .text-link {
   font-size: 12px;
 }
+.live-preview {
+  width: min(1440px, calc(100vw - 64px));
+  height: calc(100dvh - 64px);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  border: 1px solid rgba(159, 179, 236, 0.3);
+  border-radius: 12px;
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: 0 24px 100px #0009;
+  overflow: hidden;
+}
+.live-preview::backdrop {
+  background: rgba(5, 8, 15, 0.8);
+  backdrop-filter: blur(10px);
+}
+.live-preview-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.live-preview-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 16px 10px 24px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.live-preview-identity {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex: 1;
+  min-width: 0;
+}
+.live-preview-identity h4 {
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.live-preview-identity > span {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.live-preview-toolbar > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--accent);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.live-preview-close {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 28px;
+  line-height: 1;
+}
+.live-preview-close:hover {
+  background: #9fb3ec18;
+  color: var(--foreground);
+}
+.live-preview-content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: var(--background);
+}
+.live-preview-content iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--background);
+  color-scheme: normal;
+}
+.live-preview-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--background);
+  color: var(--muted);
+  font-size: 14px;
+  pointer-events: none;
+}
+.live-preview-loading > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+@media (max-width: 760px) {
+  .live-preview {
+    width: 100%;
+    height: 100dvh;
+    border: 0;
+    border-radius: 0;
+  }
+  .live-preview-toolbar {
+    gap: 12px;
+    padding: max(8px, env(safe-area-inset-top)) 12px 8px 16px;
+  }
+  .live-preview-identity > span {
+    display: none;
+  }
+  .live-preview-content {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
 .carousel-project-copy {
   padding-top: 2px;
 }

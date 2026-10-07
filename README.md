@@ -10,6 +10,8 @@ Drag, swipe or use the arrow controls to move through CineCritic, Redlands Bonsa
 
 Code rain spans the page in multiple sizes and speeds. Moving the pointer lights and bends nearby glyphs; clicking or tapping sends out a ripple. Atmospheric gradients and subtle motion add depth around the content.
 
+Choose **Try it** on CineCritic or Redlands Bonsai to browse the live website inside a preview panel. It fills the screen on phones, with persistent close and open-site controls. The embedded site loads only when opened and is unloaded on close. `previewUrl` in `src/data/projects.ts` points directly to the deployed site, while `url` remains the public project link; update both if hosting changes.
+
 ## Run locally
 
 Requires Node.js 20.9 or newer.
@@ -73,6 +75,7 @@ GitHub can delay scheduled runs. In public repositories, GitHub also disables sc
 - `src/app/page.tsx`: introduction, carousel, about and contact.
 - `src/app/globals.css`: colour tokens, typography, layout and responsive rules.
 - `src/components/ProjectCarousel.tsx`: swipe/drag gestures, carousel navigation, hover tilt and illustrative Plex workflow.
+- `src/components/LiveProjectPreview.tsx`: on-demand live website panel, keyboard dismissal and focus restoration.
 - `src/components/BackgroundRain.tsx`: interactive rain canvas, pointer lighting, click ripples, pause control and reduced-motion preference.
 - `public/brand/mc.svg`: unmodified primary logo copied from the MC reference repo.
 - `public/projects/`: real homepage screenshots captured during the design review.

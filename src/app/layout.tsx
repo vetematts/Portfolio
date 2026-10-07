@@ -2,13 +2,14 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Matt Cicala — Full-stack developer",
+  title: "Matt Cicala — Web developer",
   description:
-    "Brisbane-based full-stack developer building clear interfaces and practical systems. Explore CineCritic, Redlands Bonsai and Plex Toolkit.",
+    "Web developer drawn to simple interfaces and thoughtful systems. Based in Brisbane, Australia.",
   icons: { icon: "/icon.png" },
   openGraph: {
-    title: "Matt Cicala — Full-stack developer",
-    description: "Clear interfaces. Thoughtful systems. Useful software.",
+    title: "Matt Cicala — Web developer",
+    description:
+      "Web developer drawn to simple interfaces and thoughtful systems.",
     type: "website",
     locale: "en_AU",
   },

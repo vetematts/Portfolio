@@ -4,7 +4,7 @@ An independent portfolio built with Next.js, TypeScript and plain CSS. The origi
 
 ## Design direction
 
-A single-page portfolio with a dimensional project carousel and a living code-rain background. The original MC monogram remains in the header and footer, with signature periwinkle `#9FB3EC`. Employment, education and résumé downloads are excluded.
+A single-page portfolio with a dimensional project carousel and a living code-rain background. Copy is kept to a short introduction, factual project descriptions and contact links. The original MC monogram remains in the header and footer, with signature periwinkle `#9FB3EC`. Employment, education and résumé downloads are excluded.
 
 Drag, swipe or use the arrow controls to move through CineCritic, Redlands Bonsai and Plex Toolkit. The focused preview sits in front of tilted neighbouring previews, with a gentle pointer tilt, soft lighting and deep shadows. The project story and links follow the selected preview. Plex has an animated illustrative collection workflow using sample data; it does not connect to a library. The website previews are real screenshots, with links to the live projects.
 
@@ -72,7 +72,7 @@ GitHub can delay scheduled runs. In public repositories, GitHub also disables sc
 ### Portfolio files
 
 - `src/data/projects.ts`: project descriptions, technologies, supporting case-study notes and links.
-- `src/app/page.tsx`: introduction, carousel, about and contact.
+- `src/app/page.tsx`: introduction, carousel and contact.
 - `src/app/globals.css`: colour tokens, typography, layout and responsive rules.
 - `src/components/ProjectCarousel.tsx`: swipe/drag gestures, carousel navigation, hover tilt and illustrative Plex workflow.
 - `src/components/LiveProjectPreview.tsx`: on-demand live website panel, keyboard dismissal and focus restoration.

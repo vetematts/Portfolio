@@ -68,9 +68,7 @@ function TerminalPreview({ active }: { active: boolean }) {
           <div>
             <strong>Alien Collection</strong>
             <p>
-              {step === 4
-                ? "Alien (1979) · Aliens (1986)"
-                : "A little less manual work."}
+              {step === 4 ? "Alien (1979) · Aliens (1986)" : "Ready to run."}
             </p>
           </div>
           <span className="result-check" aria-hidden="true">
@@ -324,7 +322,6 @@ export function ProjectCarousel() {
         <div className="carousel-project-title">
           <p className="eyebrow">{project.category.toUpperCase()}</p>
           <h3>{project.name}</h3>
-          <p className="project-tagline">{project.line}</p>
           <div className="project-links">
             <LiveProjectPreview project={project} />
             {project.url && (
@@ -353,7 +350,6 @@ export function ProjectCarousel() {
         </div>
         <div className="carousel-project-copy">
           <p>{project.problem}</p>
-          <p>{project.approach}</p>
           <ul
             className="stack-list"
             aria-label={`${project.name} technologies`}

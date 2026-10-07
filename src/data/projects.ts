@@ -3,7 +3,6 @@ export type Project = {
   number: string;
   name: string;
   category: string;
-  line: string;
   image?: string;
   imageAlt?: string;
   url?: string;
@@ -23,7 +22,6 @@ export const projects: Project[] = [
     number: "01",
     name: "CineCritic",
     category: "Full-stack application",
-    line: "Find your next film. Share your take.",
     image: "/projects/cinecritic.jpg",
     imageAlt:
       "CineCritic homepage with a dark interface and rows of movie posters",
@@ -31,8 +29,7 @@ export const projects: Project[] = [
     previewUrl: "https://cinecritic-fawn.vercel.app",
     source: "https://github.com/vetematts/CineCritic",
     stack: ["React", "Express", "PostgreSQL", "TMDB", "Docker", "Google Cloud"],
-    problem:
-      "Movie discovery and personal reviews belong together. CineCritic brings browsing, accounts and reviews into one application.",
+    problem: "A web app for browsing films and writing reviews.",
     approach:
       "A React interface backed by an Express API, PostgreSQL and TMDB. JWT authentication supports accounts, while Docker and CI/CD support the deployment workflow.",
     decisions: [
@@ -66,14 +63,13 @@ export const projects: Project[] = [
           "PostgreSQL stores accounts and reviews. TMDB supplies the movie information used for discovery.",
       },
     ],
-    note: "The demo API uses free hosting and may take a moment to wake up.",
+    note: "The demo may take a moment to load.",
   },
   {
     id: "redlands-bonsai",
     number: "02",
     name: "Redlands Bonsai",
     category: "Community website",
-    line: "A clearer home for a growing community.",
     image: "/projects/bonsai.jpg",
     imageAlt:
       "Redlands Bonsai Society website with a warm cream layout, bonsai photography and event information",
@@ -87,7 +83,7 @@ export const projects: Project[] = [
       "Transactional email",
     ],
     problem:
-      "A volunteer-run bonsai club needed a responsive replacement for its legacy website, with useful information for members and visitors.",
+      "A website for Redlands Bonsai Society, with events, newsletters and membership information.",
     approach:
       "A Next.js and TypeScript site with file-driven content, date-aware events, newsletters, calendar subscriptions and forms backed by API routes and transactional email.",
     decisions: [
@@ -127,11 +123,10 @@ export const projects: Project[] = [
     number: "03",
     name: "Plex Toolkit",
     category: "Python automation",
-    line: "Less repetition. A better organised library.",
     source: "https://github.com/vetematts/PlexToolkit",
     stack: ["Python", "Plex API", "CLI", "Testing", "Linting"],
     problem:
-      "Building movie collections and keeping metadata and artwork consistent can become repetitive manual work.",
+      "A Python toolkit for managing Plex collections, metadata and artwork.",
     approach:
       "A Python CLI that automates collection building, metadata matching and artwork standardisation, organised into reusable service modules with testing and linting workflows.",
     decisions: [

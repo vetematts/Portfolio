@@ -15,7 +15,10 @@ const captureSettings: Record<string, { readySelector: string }> = {
 
 async function refreshPreviews() {
   const args = process.argv.slice(2);
-  const available = projects.filter((project) => project.url && project.image);
+  const available = projects.filter(
+    (project) =>
+      project.url && project.image && project.refreshPreview !== false,
+  );
 
   if (args.includes("--help")) {
     console.log("Usage: npm run previews:refresh -- [project-id ...]");

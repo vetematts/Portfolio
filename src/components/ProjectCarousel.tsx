@@ -231,7 +231,7 @@ export function ProjectCarousel() {
           return (
             <div
               key={item.id}
-              className={`carousel-slide slide-${item.id} ${offset === 0 ? "is-active" : "is-neighbour"}`}
+              className={`carousel-slide slide-${item.id} ${offset === 0 ? "is-active" : Math.abs(offset) === 1 ? "is-neighbour" : "is-distant"}`}
               style={
                 {
                   "--offset": offset,
@@ -297,9 +297,14 @@ export function ProjectCarousel() {
         <div className="carousel-position">
           <span className="position-number">{project.number}</span>
           <span className="position-line" aria-hidden="true">
-            <i style={{ transform: `translateX(${active * 100}%)` }} />
+            <i
+              style={{
+                width: `${100 / projects.length}%`,
+                transform: `translateX(${active * 100}%)`,
+              }}
+            />
           </span>
-          <span>0{projects.length}</span>
+          <span>{String(projects.length).padStart(2, "0")}</span>
         </div>
         <div className="carousel-arrows">
           <button
@@ -349,15 +354,7 @@ export function ProjectCarousel() {
           </div>
         </div>
         <div className="carousel-project-copy">
-          <p>{project.problem}</p>
-          <ul
-            className="stack-list"
-            aria-label={`${project.name} technologies`}
-          >
-            {project.stack.map((tech) => (
-              <li key={tech}>{tech}</li>
-            ))}
-          </ul>
+          <p>{project.description}</p>
           {project.note && (
             <small className="project-note">{project.note}</small>
           )}

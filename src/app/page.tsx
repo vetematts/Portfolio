@@ -93,7 +93,7 @@ export default function Home() {
           </a>
           <a
             className="earlier-work"
-            href="https://vetematts.github.io/Portfolio/"
+            href="https://vetematts.github.io/portfolio-og/"
             target="_blank"
             rel="noreferrer"
           >

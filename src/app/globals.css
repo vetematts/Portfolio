@@ -513,6 +513,10 @@ h2 {
   z-index: 1;
   pointer-events: none;
 }
+.carousel-slide.is-distant {
+  opacity: 0;
+  pointer-events: none;
+}
 .carousel-stage[data-dragging] .carousel-slide {
   transition: none;
 }
@@ -624,7 +628,6 @@ h2 {
 }
 .position-line i {
   display: block;
-  width: 28px;
   height: 2px;
   background: var(--accent);
   transition: transform 0.6s;
@@ -810,22 +813,6 @@ h2 {
   color: #d0d5e2;
   font-size: 14px;
   line-height: 1.85;
-}
-.stack-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  padding: 0;
-  margin: 22px 0 0;
-  list-style: none;
-  font: 10px/1.8 var(--font-mono);
-  color: var(--muted);
-}
-.stack-list li {
-  border: 1px solid var(--line);
-  padding: 3px 10px;
-  background: #b5c8ff06;
-  border-radius: 5px;
 }
 .project-note {
   display: block;
@@ -1269,9 +1256,6 @@ h2 {
   }
   .position-line {
     width: 45px;
-  }
-  .position-line i {
-    width: 15px;
   }
   .carousel-arrows {
     gap: 7px;

@@ -1,16 +1,16 @@
 # Matt Cicala — Portfolio
 
-An independent portfolio built with Next.js, TypeScript and plain CSS. The original course portfolio stays active at <https://vetematts.github.io/Portfolio/> and is linked from the footer.
+An independent portfolio built with Next.js, TypeScript and plain CSS. The original portfolio stays active at <https://vetematts.github.io/portfolio-og/> and is included in the project carousel.
 
 ## Design direction
 
 A single-page portfolio with a dimensional project carousel and a living code-rain background. Copy is kept to a short introduction, factual project descriptions and contact links. The original MC monogram remains in the header and footer, with signature periwinkle `#9FB3EC`. Employment, education and résumé downloads are excluded.
 
-Drag, swipe or use the arrow controls to move through CineCritic, Redlands Bonsai and Plex Toolkit. The focused preview sits in front of tilted neighbouring previews, with a gentle pointer tilt, soft lighting and deep shadows. The project story and links follow the selected preview. Plex has an animated illustrative collection workflow using sample data; it does not connect to a library. The website previews are real screenshots, with links to the live projects.
+Drag, swipe or use the arrow controls to move through CineCritic, Redlands Bonsai, Plex Toolkit and the first portfolio. The focused preview sits in front of tilted neighbouring previews, with a gentle pointer tilt, soft lighting and deep shadows. Each project has a short caption and links, without technology badge lists. Plex has an animated illustrative collection workflow using sample data; it does not connect to a library. The website previews are real screenshots, with links to the live projects.
 
 Code rain spans the page in multiple sizes and speeds. Moving the pointer lights and bends nearby glyphs; clicking or tapping sends out a ripple. Atmospheric gradients and subtle motion add depth around the content.
 
-Choose **Try it** on CineCritic or Redlands Bonsai to browse the live website inside a preview panel. It fills the screen on phones, with persistent close and open-site controls. The embedded site loads only when opened and is unloaded on close. `previewUrl` in `src/data/projects.ts` points directly to the deployed site, while `url` remains the public project link; update both if hosting changes.
+Choose **Try it** on a website project to browse the live website inside a preview panel. It fills the screen on phones, with persistent close and open-site controls. The embedded site loads only when opened and is unloaded on close. `previewUrl` in `src/data/projects.ts` points directly to the deployed site, while `url` remains the public project link; update both if hosting changes.
 
 ## Run locally
 
@@ -57,6 +57,8 @@ The command reads URLs and image paths from `src/data/projects.ts`, follows redi
 
 Review the images in the local carousel, then commit and push to `main` to publish them. Capture runs only when requested; it is not part of the Vercel build and does not commit or push. Plex Toolkit keeps its illustrative animated preview.
 
+The first portfolio uses a fixed screenshot to preserve the earlier design. Its `refreshPreview: false` setting excludes it from local and automated refreshes. Its **Try it** panel and website link still open the original site.
+
 ### Automatic preview refresh
 
 The GitHub Actions workflow in `.github/workflows/refresh-previews.yml` captures both live websites every two weeks on alternate Thursdays at approximately 10:17 am Brisbane time, anchored to 1 October 2026 (then 15 October, 29 October, 12 November, and so on). A small weekly check skips the intervening Thursdays, keeping a true 14-day interval across month boundaries. It runs on GitHub, so your computer can be off. Commit and push the workflow to `main` to activate it.
@@ -71,7 +73,7 @@ GitHub can delay scheduled runs. In public repositories, GitHub also disables sc
 
 ### Portfolio files
 
-- `src/data/projects.ts`: project descriptions, technologies, supporting case-study notes and links.
+- `src/data/projects.ts`: project captions, links and screenshot settings.
 - `src/app/page.tsx`: introduction, carousel and contact.
 - `src/app/globals.css`: colour tokens, typography, layout and responsive rules.
 - `src/components/ProjectCarousel.tsx`: swipe/drag gestures, carousel navigation, hover tilt and illustrative Plex workflow.

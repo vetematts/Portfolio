@@ -266,7 +266,6 @@ h1 {
   display: block;
   overflow: hidden;
   white-space: pre;
-  animation: prompt-text-reset 8s step-end infinite;
   transition: none;
 }
 .prompt-cursor-position {
@@ -299,7 +298,7 @@ h1 {
 }
 @keyframes prompt-type-short {
   0%,
-  92%,
+  94%,
   100% {
     width: 0;
   }
@@ -313,13 +312,22 @@ h1 {
     width: 3ch;
   }
   26%,
-  91% {
+  80% {
     width: 4ch;
+  }
+  82% {
+    width: 3ch;
+  }
+  86% {
+    width: 2ch;
+  }
+  90% {
+    width: 1ch;
   }
 }
 @keyframes prompt-type-full {
   0%,
-  92%,
+  94%,
   100% {
     width: 0;
   }
@@ -354,18 +362,38 @@ h1 {
     width: 10ch;
   }
   31%,
-  91% {
+  77.5% {
     width: 11ch;
   }
-}
-@keyframes prompt-text-reset {
-  0%,
-  91% {
-    visibility: visible;
+  79% {
+    width: 10ch;
   }
-  92%,
-  100% {
-    visibility: hidden;
+  80.5% {
+    width: 9ch;
+  }
+  82% {
+    width: 8ch;
+  }
+  83.5% {
+    width: 7ch;
+  }
+  85% {
+    width: 6ch;
+  }
+  86.5% {
+    width: 5ch;
+  }
+  88% {
+    width: 4ch;
+  }
+  89.5% {
+    width: 3ch;
+  }
+  91% {
+    width: 2ch;
+  }
+  92.5% {
+    width: 1ch;
   }
 }
 @keyframes prompt-blink {
@@ -382,7 +410,6 @@ html[data-motion-paused] .background-atmosphere {
   animation-play-state: paused;
 }
 html[data-motion-paused] .prompt-reveal,
-html[data-motion-paused] .prompt-letters,
 html[data-motion-paused] .prompt-cursor,
 html[data-motion-paused] .prompt-mark {
   animation: none;
@@ -395,9 +422,6 @@ html[data-motion-paused] .prompt-cursor {
 }
 html[data-motion-paused] .prompt-reveal {
   width: calc(var(--name-length) * 1ch);
-}
-html[data-motion-paused] .prompt-letters {
-  visibility: visible;
 }
 h2 {
   font-size: clamp(30px, 3.3vw, 44px);

@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Matt Cicala — Web developer",
   description:
-    "Web developer drawn to simple interfaces and thoughtful systems. Based in Brisbane, Australia.",
+    "Web developer drawn to simple interfaces and thoughtful systems.",
   icons: { icon: "/icon.png" },
   openGraph: {
     title: "Matt Cicala — Web developer",

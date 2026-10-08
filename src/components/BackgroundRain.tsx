@@ -16,6 +16,11 @@ export function BackgroundRain() {
   }, []);
 
   useEffect(() => {
+    document.documentElement.toggleAttribute("data-motion-paused", paused);
+    return () => document.documentElement.removeAttribute("data-motion-paused");
+  }, [paused]);
+
+  useEffect(() => {
     const element = canvas.current;
     const context = element?.getContext("2d");
     if (!element || !context) return;
@@ -162,11 +167,7 @@ export function BackgroundRain() {
         onClick={() => setPaused(!paused)}
       >
         <span aria-hidden="true">{paused || reduced ? "▷" : "Ⅱ"}</span>
-        {reduced
-          ? "Motion reduced"
-          : paused
-            ? "Resume background rain"
-            : "Pause background rain"}
+        {reduced ? "Motion reduced" : paused ? "Resume motion" : "Pause motion"}
       </button>
     </>
   );

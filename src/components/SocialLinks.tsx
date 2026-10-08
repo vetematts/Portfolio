@@ -1,7 +1,7 @@
 const profiles = [
   {
     name: "GitHub",
-    url: "https://github.com/vetematts",
+    url: "https://github.matteoc.dev",
     icon: "github",
   },
   {
@@ -44,7 +44,7 @@ function ProfileIcon({ platform }: { platform: string }) {
 export function SocialLinks({
   variant = "full",
 }: {
-  variant?: "compact" | "full";
+  variant?: "compact" | "full" | "hero";
 }) {
   return (
     <nav

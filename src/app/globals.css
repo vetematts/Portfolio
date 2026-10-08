@@ -266,6 +266,8 @@ h1 {
   display: block;
   overflow: hidden;
   white-space: pre;
+  animation: prompt-text-reset 8s step-end infinite;
+  transition: none;
 }
 .prompt-cursor-position {
   position: absolute;
@@ -297,7 +299,7 @@ h1 {
 }
 @keyframes prompt-type-short {
   0%,
-  96%,
+  92%,
   100% {
     width: 0;
   }
@@ -311,13 +313,13 @@ h1 {
     width: 3ch;
   }
   26%,
-  95% {
+  91% {
     width: 4ch;
   }
 }
 @keyframes prompt-type-full {
   0%,
-  96%,
+  92%,
   100% {
     width: 0;
   }
@@ -352,8 +354,18 @@ h1 {
     width: 10ch;
   }
   31%,
-  95% {
+  91% {
     width: 11ch;
+  }
+}
+@keyframes prompt-text-reset {
+  0%,
+  91% {
+    visibility: visible;
+  }
+  92%,
+  100% {
+    visibility: hidden;
   }
 }
 @keyframes prompt-blink {
@@ -370,6 +382,7 @@ html[data-motion-paused] .background-atmosphere {
   animation-play-state: paused;
 }
 html[data-motion-paused] .prompt-reveal,
+html[data-motion-paused] .prompt-letters,
 html[data-motion-paused] .prompt-cursor,
 html[data-motion-paused] .prompt-mark {
   animation: none;
@@ -382,6 +395,9 @@ html[data-motion-paused] .prompt-cursor {
 }
 html[data-motion-paused] .prompt-reveal {
   width: calc(var(--name-length) * 1ch);
+}
+html[data-motion-paused] .prompt-letters {
+  visibility: visible;
 }
 h2 {
   font-size: clamp(30px, 3.3vw, 44px);

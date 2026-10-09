@@ -6,7 +6,6 @@ export type Project = {
   image?: string;
   imageAlt?: string;
   url?: string;
-  previewUrl?: string;
   refreshPreview?: boolean;
   source?: string;
   description: string;
@@ -23,7 +22,6 @@ export const projects: Project[] = [
     imageAlt:
       "CineCritic homepage with a dark interface and rows of movie posters",
     url: "https://cinecritic.matteoc.dev",
-    previewUrl: "https://cinecritic-fawn.vercel.app",
     source: "https://github.com/vetematts/CineCritic",
     description: "A web app for browsing films and writing reviews.",
     note: "The demo may take a moment to load.",
@@ -37,7 +35,6 @@ export const projects: Project[] = [
     imageAlt:
       "Redlands Bonsai Society website with a warm cream layout, bonsai photography and event information",
     url: "https://redlandsbonsai.matteoc.dev",
-    previewUrl: "https://redlands-bonsai-society.vercel.app",
     description:
       "A website for Redlands Bonsai Society, with events, newsletters and membership information.",
   },
@@ -58,7 +55,6 @@ export const projects: Project[] = [
     imageAlt:
       "Matt’s first portfolio with a cream background, MC logo and illustrated portrait",
     url: "https://vetematts.github.io/portfolio-og/",
-    previewUrl: "https://vetematts.github.io/portfolio-og/",
     refreshPreview: false,
     source: "https://github.com/vetematts/portfolio-og",
     description:

@@ -9,7 +9,6 @@ import {
   type PointerEvent,
 } from "react";
 import { projects } from "@/data/projects";
-import { LiveProjectPreview } from "@/components/LiveProjectPreview";
 
 function TerminalPreview({ active }: { active: boolean }) {
   const [step, setStep] = useState(0);
@@ -328,7 +327,6 @@ export function ProjectCarousel() {
           <p className="eyebrow">{project.category.toUpperCase()}</p>
           <h3>{project.name}</h3>
           <div className="project-links">
-            <LiveProjectPreview project={project} />
             {project.url && (
               <a
                 className="text-link"

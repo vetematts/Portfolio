@@ -38,6 +38,12 @@ The build exports a static site to `out/`. There are no server APIs, external fo
 
 ## Edit content and branding
 
+### Link preview image
+
+`public/social/preview.png` is the 1200 × 630 sharing image, with an editable SVG alongside it. The root layout supplies this image for Open Graph and large Twitter/X cards, using `https://matteoc.dev` for absolute links and the canonical URL. This works with the static export and does not require a runtime image service.
+
+After replacing the PNG, commit and deploy it with the metadata change. LinkedIn may cache an earlier preview; use its [Post Inspector](https://www.linkedin.com/post-inspector/) to refresh the published URL before adding the link to Featured.
+
 ### Refresh project previews
 
 Capture the current live websites at a consistent 1280 × 720 desktop size:
@@ -85,4 +91,4 @@ The carousel supports keyboard arrows, Home/End and explicit previous/next butto
 
 ## Before publishing
 
-Review personal copy and project attribution and choose the deployment domain. Then add domain-specific canonical/social metadata and a social preview image. Project stories do not claim measured adoption or business outcomes.
+Review personal text, project attribution and the sharing image before publishing. Canonical and sharing metadata use `https://matteoc.dev`. Project stories do not claim measured adoption or business outcomes.

@@ -85,21 +85,7 @@ export function BackgroundRain() {
       const delta = previous ? Math.min((time - previous) / 1000, 0.1) : 0;
       previous = time;
       context.clearRect(0, 0, width, height);
-      if (pointer.strength > 0.01) {
-        const light = context.createRadialGradient(
-          pointer.x,
-          pointer.y,
-          0,
-          pointer.x,
-          pointer.y,
-          240,
-        );
-        light.addColorStop(0, `rgba(159,179,236,${0.12 * pointer.strength})`);
-        light.addColorStop(1, "rgba(159,179,236,0)");
-        context.fillStyle = light;
-        context.fillRect(0, 0, width, height);
-        pointer.strength *= 0.997;
-      }
+      pointer.strength *= 0.997;
       for (const stream of streams) {
         stream.y += stream.speed * delta;
         if (stream.y > height + 440) stream.y = -20;
@@ -111,6 +97,7 @@ export function BackgroundRain() {
           const dy = y - pointer.y;
           const distance = Math.hypot(dx, dy);
           const proximity = Math.max(0, 1 - distance / 190) * pointer.strength;
+          const glow = Math.max(0, 1 - distance / 110) ** 2 * pointer.strength;
           const bend = (dx / (distance || 1)) * proximity * 42;
           const edge = Math.abs(stream.x - width / 2) / (width / 2);
           const trail = 1 - index / stream.chars.length;
@@ -118,9 +105,12 @@ export function BackgroundRain() {
             trail * trail * (0.15 + edge * 0.18) * stream.depth +
             proximity * 0.6;
           context.fillStyle = `rgba(${index === 0 || proximity > 0.4 ? "198,212,255" : "159,179,236"},${Math.min(alpha, 0.85)})`;
+          context.shadowColor = "rgba(159,179,236,0.45)";
+          context.shadowBlur = glow > 0.02 ? glow * 5 : 0;
           context.fillText(char, stream.x + bend, y);
         });
       }
+      context.shadowBlur = 0;
       pulses = pulses.filter((item) => item.life > 0);
       for (const item of pulses) {
         item.radius += delta * 200;

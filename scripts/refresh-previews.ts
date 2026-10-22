@@ -11,6 +11,7 @@ const captureSettings: Record<string, { readySelector: string }> = {
   "redlands-bonsai": {
     readySelector: 'main img[alt="Bonsai from a recent annual show"]',
   },
+  "juicy-golden": { readySelector: "main img.poster" },
 };
 
 async function refreshPreviews() {

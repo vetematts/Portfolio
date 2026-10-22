@@ -39,8 +39,20 @@ export const projects: Project[] = [
       "A website for Redlands Bonsai Society, with events, newsletters and membership information.",
   },
   {
-    id: "plex-toolkit",
+    id: "juicy-golden",
     number: "03",
+    name: "Juicy Golden",
+    category: "Salon redesign",
+    image: "/projects/juicy-golden.jpg",
+    imageAlt:
+      "Juicy Golden salon homepage with warm gold typography over a salon film still",
+    url: "https://vetematts.github.io/JuicyGolden/",
+    description:
+      "An independent salon website redesign, with services, pricing and a direct booking link.",
+  },
+  {
+    id: "plex-toolkit",
+    number: "04",
     name: "Plex Toolkit",
     category: "Library tools",
     source: "https://github.com/vetematts/PlexToolkit",
@@ -48,7 +60,7 @@ export const projects: Project[] = [
   },
   {
     id: "earlier-portfolio",
-    number: "04",
+    number: "05",
     name: "First portfolio",
     category: "Earlier work",
     image: "/projects/earlier-portfolio.jpg",

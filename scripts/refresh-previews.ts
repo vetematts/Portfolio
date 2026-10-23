@@ -7,7 +7,6 @@ import { projects } from "../src/data/projects";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const captureSettings: Record<string, { readySelector: string }> = {
-  cinecritic: { readySelector: 'img[alt$=" poster"]' },
   "redlands-bonsai": {
     readySelector: 'main img[alt="Bonsai from a recent annual show"]',
   },

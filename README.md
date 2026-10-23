@@ -55,21 +55,21 @@ npx playwright install chromium
 # Refresh all current website previews.
 npm run previews:refresh
 
-# Or refresh just CineCritic after a redesign.
-npm run previews:refresh -- cinecritic
+# Or explicitly select Redlands Bonsai.
+npm run previews:refresh -- redlands-bonsai
 ```
 
-The command reads URLs and image paths from `src/data/projects.ts`, follows redirects, and waits for the page fonts and visible images to load. CineCritic's movie posters must appear before capture; this allows time for its API to wake up. If a site fails to load, the current previews are retained. Readiness selectors live in `scripts/refresh-previews.ts`; update these if a redesign changes the relevant markup.
+The command reads URLs and image paths from `src/data/projects.ts`, follows redirects, and waits for the page fonts and visible images to load. If a site fails to load, the current previews are retained. Readiness selectors live in `scripts/refresh-previews.ts`; update these if a redesign changes the relevant markup.
 
 Review the images in the local carousel, then commit and push to `main` to publish them. Capture runs only when requested; it is not part of the Vercel build and does not commit or push. Plex Toolkit keeps its illustrative animated preview.
 
-Juicy Golden uses its published share image while it is an inactive carousel card, with the local still as a fallback. Only the selected card mounts the playable preview, a silent, curated homepage recording that includes the hero film, scrolls to the team and advances its carousel before returning to the top. The resting poster is the video's first frame, so hover starts motion within the same scene instead of crossfading to another image. On desktop, leaving pauses at the current frame. In the phone layout or on touch devices, the selected preview starts automatically once at least half of it is visible. A Play/Pause control remains available, and manual pause stays paused until replay or reselection. The video is fetched only when playback is requested; inactive cards mount no video. It also pauses offscreen, when the tab is hidden, or when site motion is paused; reduced motion prevents automatic playback but allows explicit playback. On media failure the still image remains. This is a recording, not an embedded website: Visit site opens the actual project. The fixed JPEG/MP4 are excluded from screenshot refreshes with `refreshPreview: false`; replace both together if the showcased design changes. Raw captures remain outside Git.
+CineCritic and Juicy Golden use their published share images while they are inactive carousel cards, with local stills as fallbacks. Only the selected card mounts the playable preview, a silent, curated recording. CineCritic shows a visible cursor circling a movie card to demonstrate its tilt, then opens the movie detail page. Juicy Golden includes the hero film, scrolls to the team and advances its carousel before returning to the top. The resting poster is the video's first frame, so hover starts motion within the same scene instead of crossfading to another image. On desktop, leaving pauses at the current frame. In the phone layout or on touch devices, the selected preview starts automatically once at least half of it is visible. A Play/Pause control remains available, and manual pause stays paused until replay or reselection. The video is fetched only when playback is requested; inactive cards mount no video. It also pauses offscreen, when the tab is hidden, or when site motion is paused; reduced motion prevents automatic playback but allows explicit playback. On media failure the still image remains. This is a recording, not an embedded website: Visit site opens the actual project. The fixed JPEG/MP4 are excluded from screenshot refreshes with `refreshPreview: false`; replace both together if the showcased design changes. Raw captures remain outside Git.
 
 The first portfolio uses a fixed screenshot to preserve the earlier design. Its `refreshPreview: false` setting excludes it from local and automated refreshes. Its website link opens the original site.
 
 ### Automatic preview refresh
 
-The GitHub Actions workflow in `.github/workflows/refresh-previews.yml` captures CineCritic and Redlands Bonsai every two weeks on alternate Thursdays at approximately 10:17 am Brisbane time, anchored to 1 October 2026 (then 15 October, 29 October, 12 November, and so on). A small weekly check skips the intervening Thursdays, keeping a true 14-day interval across month boundaries. It runs on GitHub, so your computer can be off. Commit and push the workflow to `main` to activate it.
+The GitHub Actions workflow in `.github/workflows/refresh-previews.yml` captures Redlands Bonsai every two weeks on alternate Thursdays at approximately 10:17 am Brisbane time, anchored to 1 October 2026 (then 15 October, 29 October, 12 November, and so on). A small weekly check skips the intervening Thursdays, keeping a true 14-day interval across month boundaries. It runs on GitHub, so your computer can be off. Commit and push the workflow to `main` to activate it.
 
 For an immediate refresh after a redesign, open this repository's **Actions → Refresh project previews → Run workflow**. The workflow installs Chromium and runs the same capture command as the local script. If any site fails, the job fails without publishing replacements.
 

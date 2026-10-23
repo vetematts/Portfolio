@@ -24,6 +24,10 @@ export const projects: Project[] = [
     image: "/projects/cinecritic.jpg",
     imageAlt:
       "CineCritic homepage with a dark interface and rows of movie posters",
+    previewVideo: "/projects/cinecritic.mp4",
+    shareImage: "https://cinecritic-fawn.vercel.app/CineCritic.JPG",
+    shareImageAlt: "CineCritic link preview",
+    refreshPreview: false,
     url: "https://cinecritic.matteoc.dev",
     source: "https://github.com/vetematts/CineCritic",
     description: "A web app for browsing films and writing reviews.",

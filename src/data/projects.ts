@@ -48,12 +48,12 @@ export const projects: Project[] = [
     category: "Salon redesign",
     image: "/projects/juicy-golden.jpg",
     imageAlt:
-      "Juicy Golden services and pricing page with haircut and colour prices",
+      "Juicy Golden redesigned homepage on desktop and mobile, with salon imagery, gold branding and a mobile booking button",
     coverImage:
       "https://vetematts.github.io/JuicyGolden/assets/share-preview.jpg",
     coverAlt:
       "Juicy Golden gold wordmark and brand symbols over the salon frontage",
-    featureLabel: "Services & pricing",
+    featureLabel: "View redesign",
     refreshPreview: false,
     url: "https://vetematts.github.io/JuicyGolden/",
     description:

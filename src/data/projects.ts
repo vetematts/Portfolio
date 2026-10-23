@@ -5,6 +5,9 @@ export type Project = {
   category: string;
   image?: string;
   imageAlt?: string;
+  coverImage?: string;
+  coverAlt?: string;
+  featureLabel?: string;
   url?: string;
   refreshPreview?: boolean;
   source?: string;
@@ -45,7 +48,13 @@ export const projects: Project[] = [
     category: "Salon redesign",
     image: "/projects/juicy-golden.jpg",
     imageAlt:
-      "Juicy Golden salon homepage with warm gold typography over a salon film still",
+      "Juicy Golden services and pricing page with haircut and colour prices",
+    coverImage:
+      "https://vetematts.github.io/JuicyGolden/assets/share-preview.jpg",
+    coverAlt:
+      "Juicy Golden gold wordmark and brand symbols over the salon frontage",
+    featureLabel: "Services & pricing",
+    refreshPreview: false,
     url: "https://vetematts.github.io/JuicyGolden/",
     description:
       "An independent salon website redesign, with services, pricing and a direct booking link.",

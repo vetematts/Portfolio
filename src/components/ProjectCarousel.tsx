@@ -9,6 +9,7 @@ import {
   type PointerEvent,
 } from "react";
 import { projects } from "@/data/projects";
+import { ProjectPreview } from "@/components/ProjectPreview";
 
 function TerminalPreview({ active }: { active: boolean }) {
   const [step, setStep] = useState(0);
@@ -243,7 +244,12 @@ export function ProjectCarousel() {
               inert={offset !== 0}
             >
               <div className="slide-frame">
-                {item.image ? (
+                {item.coverImage ? (
+                  <ProjectPreview
+                    key={`${item.id}-${offset === 0}`}
+                    project={item}
+                  />
+                ) : item.image ? (
                   <>
                     <div className="slide-browser-bar" aria-hidden="true">
                       <span className="window-dots">

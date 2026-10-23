@@ -63,11 +63,13 @@ The command reads URLs and image paths from `src/data/projects.ts`, follows redi
 
 Review the images in the local carousel, then commit and push to `main` to publish them. Capture runs only when requested; it is not part of the Vercel build and does not commit or push. Plex Toolkit keeps its illustrative animated preview.
 
+Juicy Golden trials a share-image cover loaded directly from the site's published `og:image` URL, with a curated services/pricing image revealed on hover or by the labelled toggle. Touch and keyboard users use the same button; Escape restores the cover. If the remote cover fails, the local highlight remains visible. Its `refreshPreview: false` setting excludes the curated image from screenshot refreshes. The cover follows changes served at that image URL; changes to the site's metadata URL require updating `coverImage` in the project data. This static portfolio does not fetch or parse external metadata in the visitor's browser.
+
 The first portfolio uses a fixed screenshot to preserve the earlier design. Its `refreshPreview: false` setting excludes it from local and automated refreshes. Its website link opens the original site.
 
 ### Automatic preview refresh
 
-The GitHub Actions workflow in `.github/workflows/refresh-previews.yml` captures CineCritic, Redlands Bonsai and Juicy Golden every two weeks on alternate Thursdays at approximately 10:17 am Brisbane time, anchored to 1 October 2026 (then 15 October, 29 October, 12 November, and so on). A small weekly check skips the intervening Thursdays, keeping a true 14-day interval across month boundaries. It runs on GitHub, so your computer can be off. Commit and push the workflow to `main` to activate it.
+The GitHub Actions workflow in `.github/workflows/refresh-previews.yml` captures CineCritic and Redlands Bonsai every two weeks on alternate Thursdays at approximately 10:17 am Brisbane time, anchored to 1 October 2026 (then 15 October, 29 October, 12 November, and so on). A small weekly check skips the intervening Thursdays, keeping a true 14-day interval across month boundaries. It runs on GitHub, so your computer can be off. Commit and push the workflow to `main` to activate it.
 
 For an immediate refresh after a redesign, open this repository's **Actions → Refresh project previews → Run workflow**. The workflow installs Chromium and runs the same capture command as the local script. If any site fails, the job fails without publishing replacements.
 

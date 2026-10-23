@@ -547,6 +547,35 @@ h2 {
   width: 100%;
   pointer-events: none;
 }
+.project-preview {
+  position: relative;
+  aspect-ratio: 1280 / 720;
+}
+.project-preview img {
+  object-fit: contain;
+}
+.project-preview-feature {
+  visibility: hidden;
+}
+.project-preview[data-feature="true"] .project-preview-cover {
+  visibility: hidden;
+}
+.project-preview[data-feature="true"] .project-preview-feature {
+  visibility: visible;
+}
+.project-preview-toggle {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  z-index: 1;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #0b1018ed;
+  color: var(--foreground);
+  font-size: 12px;
+}
 .slide-browser-bar {
   display: flex;
   align-items: center;

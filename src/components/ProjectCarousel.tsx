@@ -244,7 +244,7 @@ export function ProjectCarousel() {
               inert={offset !== 0}
             >
               <div className="slide-frame">
-                {item.coverImage ? (
+                {item.previewVideo ? (
                   <ProjectPreview
                     key={`${item.id}-${offset === 0}`}
                     project={item}

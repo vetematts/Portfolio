@@ -5,9 +5,7 @@ export type Project = {
   category: string;
   image?: string;
   imageAlt?: string;
-  coverImage?: string;
-  coverAlt?: string;
-  featureLabel?: string;
+  previewVideo?: string;
   url?: string;
   refreshPreview?: boolean;
   source?: string;
@@ -48,12 +46,8 @@ export const projects: Project[] = [
     category: "Salon redesign",
     image: "/projects/juicy-golden.jpg",
     imageAlt:
-      "Juicy Golden redesigned homepage on desktop and mobile, with salon imagery, gold branding and a mobile booking button",
-    coverImage:
-      "https://vetematts.github.io/JuicyGolden/assets/share-preview.jpg",
-    coverAlt:
-      "Juicy Golden gold wordmark and brand symbols over the salon frontage",
-    featureLabel: "View redesign",
+      "Juicy Golden redesigned homepage with salon photography, gold branding and a clear booking link",
+    previewVideo: "/projects/juicy-golden.mp4",
     refreshPreview: false,
     url: "https://vetematts.github.io/JuicyGolden/",
     description:

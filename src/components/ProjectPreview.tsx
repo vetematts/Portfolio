@@ -26,6 +26,7 @@ export function ProjectPreview({ project }: { project: Project }) {
   const video = useRef<HTMLVideoElement>(null);
   const requested = useRef(false);
   const requestId = useRef(0);
+  const autoStarted = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
   const [motionPaused, setMotionPaused] = useState(false);
@@ -37,29 +38,48 @@ export function ProjectPreview({ project }: { project: Project }) {
     setPlaying(false);
   }, []);
 
-  const play = (automatic = false) => {
-    const element = video.current;
-    if (
-      !element ||
-      failed ||
-      document.documentElement.hasAttribute("data-motion-paused") ||
-      (automatic &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-    )
-      return;
-    requested.current = true;
-    const attempt = ++requestId.current;
-    if (!element.getAttribute("src")) element.src = project.previewVideo!;
-    element.muted = true;
-    void element.play().catch(() => {
-      if (requested.current && attempt === requestId.current) pause();
-    });
-  };
+  const play = useCallback(
+    (automatic = false) => {
+      const element = video.current;
+      if (
+        !element ||
+        failed ||
+        document.documentElement.hasAttribute("data-motion-paused") ||
+        (automatic &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      )
+        return;
+      requested.current = true;
+      const attempt = ++requestId.current;
+      if (!element.getAttribute("src")) element.src = project.previewVideo!;
+      element.muted = true;
+      void element.play().catch(() => {
+        if (requested.current && attempt === requestId.current) pause();
+      });
+    },
+    [failed, pause, project.previewVideo],
+  );
 
   useEffect(() => {
     const element = video.current;
     if (!element) return;
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobile = window.matchMedia("(max-width: 760px), (hover: none)");
+    let inView = false;
+    const startMobile = () => {
+      if (
+        inView &&
+        mobile.matches &&
+        !autoStarted.current &&
+        !failed &&
+        !motion.matches &&
+        !document.hidden &&
+        !document.documentElement.hasAttribute("data-motion-paused")
+      ) {
+        autoStarted.current = true;
+        play(true);
+      }
+    };
     const visibility = () => {
       if (document.hidden) pause();
     };
@@ -71,6 +91,7 @@ export function ProjectPreview({ project }: { project: Project }) {
         document.documentElement.hasAttribute("data-motion-paused");
       setMotionPaused(paused);
       if (paused) pause();
+      else startMobile();
     };
     syncPause();
     const settings = new MutationObserver(syncPause);
@@ -78,12 +99,18 @@ export function ProjectPreview({ project }: { project: Project }) {
       attributes: true,
       attributeFilter: ["data-motion-paused"],
     });
-    const visibilityObserver = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) pause();
-    });
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting && entry.intersectionRatio >= 0.5;
+        if (!inView) pause();
+        else startMobile();
+      },
+      { threshold: [0, 0.5] },
+    );
     visibilityObserver.observe(element);
     document.addEventListener("visibilitychange", visibility);
     motion.addEventListener("change", reduce);
+    mobile.addEventListener("change", startMobile);
     return () => {
       requested.current = false;
       element.pause();
@@ -91,17 +118,26 @@ export function ProjectPreview({ project }: { project: Project }) {
       visibilityObserver.disconnect();
       document.removeEventListener("visibilitychange", visibility);
       motion.removeEventListener("change", reduce);
+      mobile.removeEventListener("change", startMobile);
     };
-  }, [pause]);
+  }, [failed, pause, play]);
 
   return (
     <div
       className="project-preview"
       onPointerEnter={(event) => {
-        if (event.pointerType === "mouse") play(true);
+        if (
+          event.pointerType === "mouse" &&
+          !window.matchMedia("(max-width: 760px), (hover: none)").matches
+        )
+          play(true);
       }}
       onPointerLeave={(event) => {
-        if (event.pointerType === "mouse") pause();
+        if (
+          event.pointerType === "mouse" &&
+          !window.matchMedia("(max-width: 760px), (hover: none)").matches
+        )
+          pause();
       }}
     >
       <Image

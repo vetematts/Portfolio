@@ -71,7 +71,7 @@ function TerminalPreview({ active }: { active: boolean }) {
             </p>
           </div>
           <span className="result-check" aria-hidden="true">
-            {step === 4 ? "✓" : "↗"}
+            {step === 4 ? "✓" : ""}
           </span>
         </div>
         <div className="terminal-actions">
@@ -84,7 +84,6 @@ function TerminalPreview({ active }: { active: boolean }) {
             }}
           >
             {running ? "Working…" : step === 4 ? "Run again" : "Run sample"}
-            <span aria-hidden="true">{running ? "···" : "→"}</span>
           </button>
           <span>Illustrative run · sample data</span>
         </div>
@@ -253,7 +252,7 @@ export function ProjectCarousel() {
                         <i />
                       </span>
                       <span>{item.url?.replace("https://", "")}</span>
-                      <span>↗</span>
+                      <span />
                     </div>
                     <Image
                       src={item.image}
@@ -271,28 +270,8 @@ export function ProjectCarousel() {
             </div>
           );
         })}
-        <button
-          className="carousel-side previous-side"
-          type="button"
-          aria-label="Previous project"
-          onClick={() => select(active - 1)}
-        >
-          <span aria-hidden="true">←</span>
-        </button>
-        <button
-          className="carousel-side next-side"
-          type="button"
-          aria-label="Next project"
-          onClick={() => select(active + 1)}
-        >
-          <span aria-hidden="true">→</span>
-        </button>
       </div>
       <div className="carousel-controls">
-        <span className="drag-hint">
-          <span aria-hidden="true">↔</span> Drag to explore{" "}
-          <span className="mobile-swipe">/ swipe</span>
-        </span>
         <div className="carousel-position">
           <span className="position-number">{project.number}</span>
           <span className="position-line" aria-hidden="true">
@@ -311,14 +290,36 @@ export function ProjectCarousel() {
             aria-label="Show previous project"
             onClick={() => select(active - 1)}
           >
-            ←
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m14 6-6 6 6 6" />
+            </svg>
           </button>
           <button
             type="button"
             aria-label="Show next project"
             onClick={() => select(active + 1)}
           >
-            →
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m10 6 6 6-6 6" />
+            </svg>
           </button>
         </div>
       </div>
@@ -334,7 +335,7 @@ export function ProjectCarousel() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Visit site <span aria-hidden="true">↗</span>
+                Visit site
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             )}
@@ -345,7 +346,7 @@ export function ProjectCarousel() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Source code <span aria-hidden="true">↗</span>
+                Source code
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             )}

@@ -29,9 +29,6 @@ export default function Home() {
               Web developer drawn to simple interfaces and thoughtful systems.
             </p>
             <SocialLinks variant="hero" />
-            <a className="projects-link" href="#work">
-              Projects <span aria-hidden="true">↓</span>
-            </a>
           </div>
           <div className="hero-signal" aria-hidden="true">
             <HeroNamePrompt />
@@ -50,7 +47,7 @@ export default function Home() {
       </main>
       <footer className="site-footer page-width">
         <a className="back-to-top" href="#top">
-          Back to top <span aria-hidden="true">↑</span>
+          Back to top
         </a>
         <BackgroundRain />
       </footer>

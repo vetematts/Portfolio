@@ -64,9 +64,6 @@ export function SocialLinks({
           <span className="profile-label">
             <strong>{profile.name}</strong>
           </span>
-          <span className="profile-arrow" aria-hidden="true">
-            ↗
-          </span>
           <span className="sr-only"> (opens in a new tab)</span>
         </a>
       ))}

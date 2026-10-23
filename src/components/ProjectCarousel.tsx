@@ -9,7 +9,7 @@ import {
   type PointerEvent,
 } from "react";
 import { projects } from "@/data/projects";
-import { ProjectPreview } from "@/components/ProjectPreview";
+import { ProjectPreview, ProjectShareCover } from "@/components/ProjectPreview";
 
 function TerminalPreview({ active }: { active: boolean }) {
   const [step, setStep] = useState(0);
@@ -245,10 +245,11 @@ export function ProjectCarousel() {
             >
               <div className="slide-frame">
                 {item.previewVideo ? (
-                  <ProjectPreview
-                    key={`${item.id}-${offset === 0}`}
-                    project={item}
-                  />
+                  offset === 0 ? (
+                    <ProjectPreview project={item} />
+                  ) : (
+                    <ProjectShareCover project={item} />
+                  )
                 ) : item.image ? (
                   <>
                     <div className="slide-browser-bar" aria-hidden="true">

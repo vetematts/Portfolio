@@ -4,6 +4,24 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Project } from "@/data/projects";
 
+export function ProjectShareCover({ project }: { project: Project }) {
+  const [failed, setFailed] = useState(false);
+  const useShare = project.shareImage && !failed;
+
+  return (
+    <div className="project-preview project-share-cover">
+      <Image
+        src={useShare ? project.shareImage! : project.image!}
+        alt={useShare ? project.shareImageAlt || "" : project.imageAlt || ""}
+        fill
+        sizes="(max-width: 760px) 85vw, 900px"
+        draggable={false}
+        onError={() => setFailed(true)}
+      />
+    </div>
+  );
+}
+
 export function ProjectPreview({ project }: { project: Project }) {
   const video = useRef<HTMLVideoElement>(null);
   const requested = useRef(false);

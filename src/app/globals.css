@@ -552,16 +552,22 @@ h2 {
   aspect-ratio: 1280 / 720;
 }
 .project-preview img {
-  object-fit: contain;
+  object-fit: cover;
+  transition: opacity 240ms ease-in-out;
 }
 .project-preview-feature {
-  visibility: hidden;
+  opacity: 0;
 }
 .project-preview[data-feature="true"] .project-preview-cover {
-  visibility: hidden;
+  opacity: 0;
 }
 .project-preview[data-feature="true"] .project-preview-feature {
-  visibility: visible;
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-preview img {
+    transition: none;
+  }
 }
 .project-preview-toggle {
   position: absolute;

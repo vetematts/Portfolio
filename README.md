@@ -38,6 +38,10 @@ The build exports a static site to `out/`. There are no server APIs, external fo
 
 ## Edit content and branding
 
+### Favicon
+
+`public/icon.svg` uses the original MC artwork in its correct proportions, centred on a square canvas with 2px vertical padding at 32px. `public/icon.png` is the matching 32px fallback. The root layout versions both URLs to refresh cached browser icons. This framing matches Matte Web's M-and-dot favicon while keeping the two marks distinct; the main MC artwork remains in `public/brand/mc.svg`.
+
 ### Link preview image
 
 `public/social/preview.png` is the 1200 × 630 sharing image, with an editable SVG alongside it. The root layout supplies this image for Open Graph and large Twitter/X cards, using `https://matteoc.dev` for absolute links and the canonical URL. This works with the static export and does not require a runtime image service.

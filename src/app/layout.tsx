@@ -16,7 +16,12 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/" },
-  icons: { icon: "/icon.png" },
+  icons: {
+    icon: [
+      { url: "/icon.png?v=proportions", type: "image/png", sizes: "32x32" },
+      { url: "/icon.svg?v=proportions", type: "image/svg+xml", sizes: "any" },
+    ],
+  },
   openGraph: {
     title,
     description,

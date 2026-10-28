@@ -12,6 +12,8 @@ export type Project = {
   refreshPreview?: boolean;
   source?: string;
   description: string;
+  contribution?: string;
+  technologies?: string[];
   note?: string;
 };
 
@@ -31,6 +33,9 @@ export const projects: Project[] = [
     url: "https://cinecritic.matteoc.dev",
     source: "https://github.com/vetematts/CineCritic",
     description: "A web app for browsing films and writing reviews.",
+    contribution:
+      "My work spans the interface and API, including responsive movie pages and film discovery.",
+    technologies: ["React", "Node.js", "Express", "PostgreSQL"],
     note: "The demo may take a moment to load.",
   },
   {

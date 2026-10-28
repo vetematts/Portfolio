@@ -361,6 +361,14 @@ export function ProjectCarousel() {
         </div>
         <div className="carousel-project-copy">
           <p>{project.description}</p>
+          {project.contribution && <p>{project.contribution}</p>}
+          {project.technologies && (
+            <ul className="project-technologies" aria-label="Technologies">
+              {project.technologies.map((technology) => (
+                <li key={technology}>{technology}</li>
+              ))}
+            </ul>
+          )}
           {project.note && (
             <small className="project-note">{project.note}</small>
           )}

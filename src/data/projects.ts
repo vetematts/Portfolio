@@ -70,6 +70,9 @@ export const projects: Project[] = [
     url: "https://vetematts.github.io/JuicyGolden/",
     description:
       "An independent salon website redesign, with services, pricing and a direct booking link.",
+    contribution:
+      "I reworked the layout and mobile booking access around the salon’s existing lettering, photography and film.",
+    technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
     id: "plex-toolkit",

@@ -49,6 +49,9 @@ export const projects: Project[] = [
     url: "https://redlandsbonsai.matteoc.dev",
     description:
       "A website for Redlands Bonsai Society, with events, newsletters and membership information.",
+    contribution:
+      "I rebuilt the site with clearer navigation and a responsive layout, keeping the club’s identity and photography.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
   },
   {
     id: "juicy-golden",

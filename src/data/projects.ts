@@ -81,6 +81,9 @@ export const projects: Project[] = [
     category: "Library tools",
     source: "https://github.com/vetematts/PlexToolkit",
     description: "Tools for managing Plex collections, metadata and artwork.",
+    contribution:
+      "I built a command-line workflow for creating film collections and updating artwork, while preserving manually locked images.",
+    technologies: ["Python", "Plex API", "TMDb API"],
   },
   {
     id: "earlier-portfolio",

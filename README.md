@@ -48,38 +48,17 @@ The build exports a static site to `out/`. There are no server APIs, external fo
 
 After replacing the PNG, commit and deploy it with the metadata change. LinkedIn may cache an earlier preview; use its [Post Inspector](https://www.linkedin.com/post-inspector/) to refresh the published URL before adding the link to Featured.
 
-### Refresh project previews
+### Project previews
 
-The screenshot utility remains available for eligible projects at a consistent 1280 × 720 desktop size. All current website entries now use curated media and are excluded, so it currently reports no eligible projects without launching a browser:
+CineCritic, Redlands Bonsai and Juicy Golden use their published share images while they are inactive carousel cards, with local stills as fallbacks. Only the selected card mounts the playable preview, a silent, curated recording. CineCritic shows a visible cursor circling a movie card to demonstrate its tilt, then opens the movie detail page. Redlands Bonsai scrolls from the homepage through meeting details to the moving club-photo strip, demonstrates dragging it, then returns to the top. Juicy Golden includes the hero film, scrolls to the team and advances its carousel twice before returning to the top. The resting poster is the video's first frame, so hover starts motion within the same scene instead of crossfading to another image. On desktop, leaving pauses at the current frame. In the phone layout or on touch devices, the selected preview starts automatically once at least half of it is visible. A Play/Pause control remains available, and manual pause stays paused until replay or reselection. The video is fetched only when playback is requested; inactive cards mount no video. It also pauses offscreen, when the tab is hidden, or when site motion is paused; reduced motion prevents automatic playback but allows explicit playback. On media failure the still image remains. This is a recording, not an embedded website: Visit site opens the actual project. The JPEG/MP4 pairs are fixed assets; replace both together if the showcased design changes. Raw captures remain outside Git.
 
-```sh
-# Install the screenshot browser once after npm ci.
-npx playwright install chromium
+The first portfolio uses a fixed screenshot to preserve the earlier design. Its website link opens the original site.
 
-# Refresh all current website previews.
-npm run previews:refresh
-
-# List projects eligible for screenshot refresh.
-npm run previews:refresh -- --help
-```
-
-The command reads URLs and image paths from `src/data/projects.ts`, follows redirects, and waits for the page fonts and visible images to load. If a site fails to load, the current previews are retained. Readiness selectors live in `scripts/refresh-previews.ts`; update these if a redesign changes the relevant markup.
-
-Review the images in the local carousel, then commit and push to `main` to publish them. Capture runs only when requested; it is not part of the Vercel build and does not commit or push. Plex Toolkit keeps its illustrative animated preview.
-
-CineCritic, Redlands Bonsai and Juicy Golden use their published share images while they are inactive carousel cards, with local stills as fallbacks. Only the selected card mounts the playable preview, a silent, curated recording. CineCritic shows a visible cursor circling a movie card to demonstrate its tilt, then opens the movie detail page. Redlands Bonsai scrolls from the homepage through meeting details to the moving club-photo strip, demonstrates dragging it, then returns to the top. Juicy Golden includes the hero film, scrolls to the team and advances its carousel twice before returning to the top. The resting poster is the video's first frame, so hover starts motion within the same scene instead of crossfading to another image. On desktop, leaving pauses at the current frame. In the phone layout or on touch devices, the selected preview starts automatically once at least half of it is visible. A Play/Pause control remains available, and manual pause stays paused until replay or reselection. The video is fetched only when playback is requested; inactive cards mount no video. It also pauses offscreen, when the tab is hidden, or when site motion is paused; reduced motion prevents automatic playback but allows explicit playback. On media failure the still image remains. This is a recording, not an embedded website: Visit site opens the actual project. The fixed JPEG/MP4 are excluded from screenshot refreshes with `refreshPreview: false`; replace both together if the showcased design changes. Raw captures remain outside Git.
-
-The first portfolio uses a fixed screenshot to preserve the earlier design. Its `refreshPreview: false` setting excludes it from local and automated refreshes. Its website link opens the original site.
-
-### Automatic preview refresh
-
-The existing `.github/workflows/refresh-previews.yml` remains in place pending review of the Bonsai recording. All current projects are now excluded with `refreshPreview: false`, so the screenshot command exits without browser capture or media changes. Once this revision is published, scheduled runs cannot overwrite these curated previews or create screenshot commits.
-
-The workflow still checks alternate Thursdays at approximately 10:17 am Brisbane time and retains uploaded screenshot archives for 45 days. Until this revision is pushed, GitHub continues using the previously published capture settings. Removing the unused workflow and screenshot utility is the next review step after accepting the Bonsai recording.
+There is no scheduled screenshot capture or automated media commit. Preview updates are reviewed and committed with other site changes. Previous screenshot versions remain in Git history; old Actions artifacts expire under their existing retention policy. Removing the workflow takes effect on GitHub after this change is pushed to the default branch.
 
 ### Portfolio files
 
-- `src/data/projects.ts`: project captions, links and screenshot settings.
+- `src/data/projects.ts`: project descriptions, technology labels, links and preview assets.
 - `src/app/page.tsx`: introduction, carousel and contact.
 - `src/app/globals.css`: colour tokens, typography, layout and responsive rules.
 - `src/components/ProjectCarousel.tsx`: swipe/drag gestures, carousel navigation, hover tilt and illustrative Plex workflow.

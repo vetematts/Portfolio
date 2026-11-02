@@ -9,7 +9,6 @@ export type Project = {
   shareImage?: string;
   shareImageAlt?: string;
   url?: string;
-  refreshPreview?: boolean;
   source?: string;
   description: string;
   contribution?: string;
@@ -29,7 +28,6 @@ export const projects: Project[] = [
     previewVideo: "/projects/cinecritic.mp4",
     shareImage: "https://cinecritic-fawn.vercel.app/CineCritic.JPG",
     shareImageAlt: "CineCritic link preview",
-    refreshPreview: false,
     url: "https://cinecritic.matteoc.dev",
     source: "https://github.com/vetematts/CineCritic",
     description: "A web app for browsing films and writing reviews.",
@@ -50,7 +48,6 @@ export const projects: Project[] = [
     shareImage:
       "https://redlands-bonsai-society.vercel.app/opengraph-image.png",
     shareImageAlt: "Redlands Bonsai Society link preview",
-    refreshPreview: false,
     url: "https://redlandsbonsai.matteoc.dev",
     description:
       "A website for Redlands Bonsai Society, with events, newsletters and membership information.",
@@ -71,7 +68,6 @@ export const projects: Project[] = [
       "https://vetematts.github.io/JuicyGolden/assets/share-preview.jpg",
     shareImageAlt:
       "Juicy Golden gold wordmark and brand symbols over the salon frontage",
-    refreshPreview: false,
     url: "https://vetematts.github.io/JuicyGolden/",
     description:
       "An independent salon website redesign, with services, pricing and a direct booking link.",
@@ -99,7 +95,6 @@ export const projects: Project[] = [
     imageAlt:
       "Matt’s first portfolio with a cream background, MC logo and illustrated portrait",
     url: "https://vetematts.github.io/portfolio-og/",
-    refreshPreview: false,
     source: "https://github.com/vetematts/portfolio-og",
     description:
       "My original portfolio, built with HTML and CSS before this version.",

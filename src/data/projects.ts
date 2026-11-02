@@ -46,6 +46,11 @@ export const projects: Project[] = [
     image: "/projects/bonsai.jpg",
     imageAlt:
       "Redlands Bonsai Society website with a warm cream layout, bonsai photography and event information",
+    previewVideo: "/projects/bonsai.mp4",
+    shareImage:
+      "https://redlands-bonsai-society.vercel.app/opengraph-image.png",
+    shareImageAlt: "Redlands Bonsai Society link preview",
+    refreshPreview: false,
     url: "https://redlandsbonsai.matteoc.dev",
     description:
       "A website for Redlands Bonsai Society, with events, newsletters and membership information.",

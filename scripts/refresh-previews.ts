@@ -39,6 +39,10 @@ async function refreshPreviews() {
   const selected = available.filter(
     (project) => args.length === 0 || args.includes(project.id),
   );
+  if (selected.length === 0) {
+    console.log("No projects use automatic screenshots; curated previews are unchanged.");
+    return;
+  }
   const browser = await chromium.launch();
   const temporary = await mkdtemp(join(tmpdir(), "portfolio-previews-"));
 

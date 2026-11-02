@@ -50,7 +50,7 @@ After replacing the PNG, commit and deploy it with the metadata change. LinkedIn
 
 ### Refresh project previews
 
-Capture the current live websites at a consistent 1280 × 720 desktop size:
+The screenshot utility remains available for eligible projects at a consistent 1280 × 720 desktop size. All current website entries now use curated media and are excluded, so it currently reports no eligible projects without launching a browser:
 
 ```sh
 # Install the screenshot browser once after npm ci.
@@ -59,29 +59,23 @@ npx playwright install chromium
 # Refresh all current website previews.
 npm run previews:refresh
 
-# Or explicitly select Redlands Bonsai.
-npm run previews:refresh -- redlands-bonsai
+# List projects eligible for screenshot refresh.
+npm run previews:refresh -- --help
 ```
 
 The command reads URLs and image paths from `src/data/projects.ts`, follows redirects, and waits for the page fonts and visible images to load. If a site fails to load, the current previews are retained. Readiness selectors live in `scripts/refresh-previews.ts`; update these if a redesign changes the relevant markup.
 
 Review the images in the local carousel, then commit and push to `main` to publish them. Capture runs only when requested; it is not part of the Vercel build and does not commit or push. Plex Toolkit keeps its illustrative animated preview.
 
-CineCritic and Juicy Golden use their published share images while they are inactive carousel cards, with local stills as fallbacks. Only the selected card mounts the playable preview, a silent, curated recording. CineCritic shows a visible cursor circling a movie card to demonstrate its tilt, then opens the movie detail page. Juicy Golden includes the hero film, scrolls to the team and advances its carousel twice before returning to the top. The resting poster is the video's first frame, so hover starts motion within the same scene instead of crossfading to another image. On desktop, leaving pauses at the current frame. In the phone layout or on touch devices, the selected preview starts automatically once at least half of it is visible. A Play/Pause control remains available, and manual pause stays paused until replay or reselection. The video is fetched only when playback is requested; inactive cards mount no video. It also pauses offscreen, when the tab is hidden, or when site motion is paused; reduced motion prevents automatic playback but allows explicit playback. On media failure the still image remains. This is a recording, not an embedded website: Visit site opens the actual project. The fixed JPEG/MP4 are excluded from screenshot refreshes with `refreshPreview: false`; replace both together if the showcased design changes. Raw captures remain outside Git.
+CineCritic, Redlands Bonsai and Juicy Golden use their published share images while they are inactive carousel cards, with local stills as fallbacks. Only the selected card mounts the playable preview, a silent, curated recording. CineCritic shows a visible cursor circling a movie card to demonstrate its tilt, then opens the movie detail page. Redlands Bonsai scrolls from the homepage through meeting details to the moving club-photo strip, demonstrates dragging it, then returns to the top. Juicy Golden includes the hero film, scrolls to the team and advances its carousel twice before returning to the top. The resting poster is the video's first frame, so hover starts motion within the same scene instead of crossfading to another image. On desktop, leaving pauses at the current frame. In the phone layout or on touch devices, the selected preview starts automatically once at least half of it is visible. A Play/Pause control remains available, and manual pause stays paused until replay or reselection. The video is fetched only when playback is requested; inactive cards mount no video. It also pauses offscreen, when the tab is hidden, or when site motion is paused; reduced motion prevents automatic playback but allows explicit playback. On media failure the still image remains. This is a recording, not an embedded website: Visit site opens the actual project. The fixed JPEG/MP4 are excluded from screenshot refreshes with `refreshPreview: false`; replace both together if the showcased design changes. Raw captures remain outside Git.
 
 The first portfolio uses a fixed screenshot to preserve the earlier design. Its `refreshPreview: false` setting excludes it from local and automated refreshes. Its website link opens the original site.
 
 ### Automatic preview refresh
 
-The GitHub Actions workflow in `.github/workflows/refresh-previews.yml` captures Redlands Bonsai every two weeks on alternate Thursdays at approximately 10:17 am Brisbane time, anchored to 1 October 2026 (then 15 October, 29 October, 12 November, and so on). A small weekly check skips the intervening Thursdays, keeping a true 14-day interval across month boundaries. It runs on GitHub, so your computer can be off. Commit and push the workflow to `main` to activate it.
+The existing `.github/workflows/refresh-previews.yml` remains in place pending review of the Bonsai recording. All current projects are now excluded with `refreshPreview: false`, so the screenshot command exits without browser capture or media changes. Once this revision is published, scheduled runs cannot overwrite these curated previews or create screenshot commits.
 
-For an immediate refresh after a redesign, open this repository's **Actions → Refresh project previews → Run workflow**. The workflow installs Chromium and runs the same capture command as the local script. If any site fails, the job fails without publishing replacements.
-
-After successful captures, the workflow replaces the existing JPEGs and automatically commits and pushes changed images to `main` with the message `Refresh project previews`. Unchanged images do not create a commit. The connected Vercel Git integration then builds and publishes the portfolio, without a manual review step or additional deployment credentials. See [Vercel's Git deployment documentation](https://vercel.com/docs/deployments).
-
-Runs also save a **project-previews** ZIP under **Artifacts**, retained for 45 days. These archives are outside the repository and expire automatically. The working tree keeps only the current screenshot files; earlier committed versions remain in Git history. If another commit reaches `main` during capture, the job's normal push fails safely; rerun it from the Actions tab. Branch rules must permit this workflow to push to `main`.
-
-GitHub can delay scheduled runs. In public repositories, GitHub also disables schedules after 60 days without repository activity; re-enable the workflow from the Actions tab if that happens. See [GitHub's scheduling documentation](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
+The workflow still checks alternate Thursdays at approximately 10:17 am Brisbane time and retains uploaded screenshot archives for 45 days. Until this revision is pushed, GitHub continues using the previously published capture settings. Removing the unused workflow and screenshot utility is the next review step after accepting the Bonsai recording.
 
 ### Portfolio files
 

@@ -27,6 +27,8 @@ export function ProjectPreview({ project }: { project: Project }) {
   const requested = useRef(false);
   const requestId = useRef(0);
   const autoStarted = useRef(false);
+  const firstFrame = useRef<number | null>(null);
+  const [revealed, setRevealed] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
   const [motionPaused, setMotionPaused] = useState(false);
@@ -113,6 +115,8 @@ export function ProjectPreview({ project }: { project: Project }) {
     mobile.addEventListener("change", startMobile);
     return () => {
       requested.current = false;
+      if (firstFrame.current !== null)
+        element.cancelVideoFrameCallback(firstFrame.current);
       element.pause();
       settings.disconnect();
       visibilityObserver.disconnect();
@@ -124,7 +128,7 @@ export function ProjectPreview({ project }: { project: Project }) {
 
   return (
     <div
-      className="project-preview"
+      className={`project-preview${revealed && !failed ? " is-revealed" : ""}`}
       onPointerEnter={(event) => {
         if (
           event.pointerType === "mouse" &&
@@ -161,7 +165,16 @@ export function ProjectPreview({ project }: { project: Project }) {
         hidden={failed}
         onPlaying={() => {
           if (!requested.current || document.hidden) pause();
-          else setPlaying(true);
+          else {
+            setPlaying(true);
+            const element = video.current;
+            if (element && !revealed && firstFrame.current === null) {
+              firstFrame.current = element.requestVideoFrameCallback(() => {
+                firstFrame.current = null;
+                setRevealed(true);
+              });
+            }
+          }
         }}
         onPause={() => setPlaying(false)}
         onError={() => {
@@ -169,6 +182,9 @@ export function ProjectPreview({ project }: { project: Project }) {
           setFailed(true);
         }}
       />
+      <div className="project-preview-cover" aria-hidden="true">
+        <ProjectShareCover project={project} />
+      </div>
       <button
         className="project-preview-toggle"
         type="button"

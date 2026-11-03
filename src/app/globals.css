@@ -562,7 +562,22 @@ h2 {
   height: 100%;
   pointer-events: none;
 }
+.project-preview-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 320ms ease-out, visibility 0s 0s;
+}
+.project-preview.is-revealed > .project-preview-cover {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 320ms ease-out, visibility 0s 320ms;
+}
 .project-preview-toggle {
+  z-index: 2;
   position: absolute;
   right: 16px;
   bottom: 12px;

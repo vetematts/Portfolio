@@ -64,6 +64,10 @@ export const projects: Project[] = [
     imageAlt:
       "Juicy Golden redesigned homepage with salon photography, gold branding and a clear booking link",
     previewVideo: "/projects/juicy-golden.mp4",
+    shareImage:
+      "https://vetematts.github.io/JuicyGolden/assets/share-preview.jpg",
+    shareImageAlt:
+      "Juicy Golden gold wordmark and brand symbols over the salon frontage",
     url: "https://vetematts.github.io/JuicyGolden/",
     description:
       "An independent salon website redesign, with services, pricing and a direct booking link.",

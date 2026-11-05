@@ -140,8 +140,14 @@ export function ProjectPreview({ project }: { project: Project }) {
         if (
           event.pointerType === "mouse" &&
           !window.matchMedia("(max-width: 760px), (hover: none)").matches
-        )
+        ) {
           pause();
+          if (firstFrame.current !== null && video.current) {
+            video.current.cancelVideoFrameCallback(firstFrame.current);
+            firstFrame.current = null;
+          }
+          setRevealed(false);
+        }
       }}
     >
       <Image
@@ -171,7 +177,7 @@ export function ProjectPreview({ project }: { project: Project }) {
             if (element && !revealed && firstFrame.current === null) {
               firstFrame.current = element.requestVideoFrameCallback(() => {
                 firstFrame.current = null;
-                setRevealed(true);
+                if (requested.current) setRevealed(true);
               });
             }
           }

@@ -96,7 +96,9 @@ export const projects: Project[] = [
       "Matt’s first portfolio with a cream background, MC logo and illustrated portrait",
     url: "https://vetematts.github.io/portfolio-og/",
     source: "https://github.com/vetematts/portfolio-og",
-    description:
-      "My original portfolio, built with HTML and CSS before this version.",
+    description: "My original portfolio, showing an earlier approach to the site.",
+    contribution:
+      "I built the responsive layouts and light/dark theme controls.",
+    technologies: ["HTML", "CSS", "JavaScript"],
   },
 ];
